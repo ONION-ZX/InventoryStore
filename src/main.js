@@ -1,4 +1,6 @@
 import './css/global.css';
+import '../node_modules/@fortawesome/fontawesome-free/js/all.js';
+
 import Vue from 'vue';
 import App from './App.vue';
 import Home from './page/Home';
