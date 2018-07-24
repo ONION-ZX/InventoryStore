@@ -5,6 +5,8 @@ import Vue from 'vue';
 import App from './App.vue';
 import Home from './page/Home';
 import Detail from './page/Detail';
+import Search from './page/Search';
+
 import Router from 'vue-router';
 
 Vue.use(Router);
@@ -13,6 +15,7 @@ const router = new Router({
   routes: [
     {path: '/', component: Home},
     {path: '/detail', component: Detail},   
+    {path: '/search', component: Search},       
   ]
 })
 

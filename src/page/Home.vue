@@ -6,6 +6,8 @@
                <img src="../assets/main.jpg"> 
             </div>
             <span class="desc">ANCIENS VÊTEMENTS DE MÉTIERS, TENUES OUVRIÈRES, DE CORVÉE, CURIOSITÉS VESTIMENTAIRES OPULAIRES...</span>
+            <!-- <img src="../assets/sub-bg.jpg">  -->
+
         </div>
         <div class="main">
             <div class="cat-item">
@@ -14,7 +16,7 @@
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="thumbnail">
-                                <img src="../assets/product4.jpg">
+                                <img src="../assets/product/product4.jpg">
                             </div>
                             <div class="info">
                                 <h4 class="title">French Double Breasted Work Jackets 1950’s</h4>
@@ -29,7 +31,7 @@
                     <div class="col-lg-4">
                             <div class="card">
                                 <div class="thumbnail">
-                                    <img src="../assets/product5.jpg">
+                                    <img src="../assets/product/product5.jpg">
                                 </div>
                                 <div class="info">
                                     <h4 class="title">French Army Motorcycle Coat 1940s</h4>
@@ -44,7 +46,7 @@
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="thumbnail">
-                                <img src="../assets/product6.jpg">
+                                <img src="../assets/product/product6.jpg">
                             </div>
                             <div class="info">
                                 <h4 class="title">France workwear #1900s</h4>
@@ -62,7 +64,7 @@
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="thumbnail">
-                                <img src="../assets/product7.jpg">
+                                <img src="../assets/product/product7.jpg">
                             </div>
                             <div class="info">
                                 <h4 class="title">French Double Breasted Work Jackets 1950’s</h4>
@@ -77,7 +79,7 @@
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="thumbnail">
-                                <img src="../assets/product8.jpg">
+                                <img src="../assets/product/product8.jpg">
                             </div>
                             <div class="info">
                                 <h4 class="title">French Army Motorcycle Coat 1940s</h4>
@@ -92,7 +94,7 @@
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="thumbnail">
-                                <img src="../assets/product9.jpg">
+                                <img src="../assets/product/product9.jpg">
                             </div>
                             <div class="info">
                                 <h4 class="title">France workwear #1900s</h4>
@@ -110,7 +112,7 @@
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="thumbnail">
-                                <img src="../assets/product1.jpg">
+                                <img src="../assets/product/product1.jpg">
                             </div>
                             <div class="info">
                                 <h4 class="title">French Double Breasted Work Jackets 1950’s</h4>
@@ -125,7 +127,7 @@
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="thumbnail">
-                                <img src="../assets/product2.jpg">
+                                <img src="../assets/product/product10.jpg">
                             </div>
                             <div class="info">
                                 <h4 class="title">French Army Motorcycle Coat 1940s</h4>
@@ -140,7 +142,7 @@
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="thumbnail">
-                                <img src="../assets/product3.jpg">
+                                <img src="../assets/product/product3.jpg">
                             </div>
                             <div class="info">
                                 <h4 class="title">France workwear #1900s</h4>

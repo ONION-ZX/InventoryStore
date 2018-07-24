@@ -14,27 +14,27 @@
             <div class="row info">
                 <div class="col col-lg-6">
                     <div class="product_flickity">
-                        <img src="../assets/product1.jpg">
+                        <img src="../assets/product/product1.jpg">
                     </div>
                     <!-- <div class="product_gallery">
                         <div class="col-lg-3">
                             <div class="pad">
-                                <img src="../assets/product8.jpg">
+                                <img src="../assets/product/product8.jpg">
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="pad">
-                                <img src="../assets/product5.jpg">
+                                <img src="../assets/product/product5.jpg">
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="pad">
-                                <img src="../assets/product6.jpg">
+                                <img src="../assets/product/product6.jpg">
                             </div>
                         </div>
                         <div class="col-lg-3">
                             <div class="pad">
-                                <img src="../assets/product7.jpg">
+                                <img src="../assets/product/product7.jpg">
                             </div>
                         </div>
                     </div> -->
@@ -71,17 +71,17 @@
             <h2>Related Items</h2>
             <div class="col-lg-4">
                 <div class="pad">
-                    <img src="../assets/product6.jpg">                    
+                    <img src="../assets/product/product6.jpg">                    
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="pad">
-                    <img src="../assets/product7.jpg">                    
+                    <img src="../assets/product/product7.jpg">                    
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="pad">
-                    <img src="../assets/product5.jpg">                    
+                    <img src="../assets/product/product5.jpg">                    
                 </div>
             </div>
         </div>       
@@ -103,7 +103,7 @@ export default {
         margin-bottom: 20px;
         line-height: 1.2;
     }
-    .price {
+    .info .price {
         padding: 3px;
         padding-left: 0;
         font-size: 1.3rem;
