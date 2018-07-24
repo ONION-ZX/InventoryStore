@@ -1,6 +1,6 @@
 <template>
     <div class="col-lg-12 footer right">
-        <span>© 2018 INVENTORY</span>  
+        <span>© 2018 BLUEINGREEN</span>  
     </div>
 </template>
 

@@ -14,13 +14,61 @@
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="thumbnail">
-                                <img src="../assets/product1.jpg">
+                                <img src="../assets/product4.jpg">
+                            </div>
+                            <div class="info">
+                                <h4 class="title">French Double Breasted Work Jackets 1950’s</h4>
+                                <div class="desc"> #France #french #vintageworkwear #frenchmilitary #militaryclothing #ww2 #menswear #ワークジャケット #ワークウエア #フレンチヴィンテージ</div>
+                                <div class="buy">
+                                    <div class="price">$300</div>
+                                    <button type="button">Detail</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                            <div class="card">
+                                <div class="thumbnail">
+                                    <img src="../assets/product5.jpg">
+                                </div>
+                                <div class="info">
+                                    <h4 class="title">French Army Motorcycle Coat 1940s</h4>
+                                    <div class="desc">#France #french #vintageworkwear #frenchmilitary #militaryclothing #ww2 #menswear #ワークジャケット #ワークウエア #フレンチヴィンテージ</div>
+                                    <div class="buy">
+                                        <div class="price">$588</div>
+                                        <button type="button">Detail</button>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="thumbnail">
+                                <img src="../assets/product6.jpg">
+                            </div>
+                            <div class="info">
+                                <h4 class="title">France workwear #1900s</h4>
+                                <div class="desc">#turnofthecentury #frenchpeasant #peasantworkwear #frenchwork #farmer #sackcoat #frenchworkwear #frenchchore #インディゴリネン</div>
+                                <div class="buy">
+                                    <div class="price">$588</div>
+                                    <button type="button">Detail</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <h2>Latest Arrival</h2>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="thumbnail">
+                                <img src="../assets/product7.jpg">
                             </div>
                             <div class="info">
                                 <h4 class="title">French Double Breasted Work Jackets 1950’s</h4>
                                 <div class="desc">#France #french #vintageworkwear #frenchmilitary #militaryclothing #ww2 #menswear #ワークジャケット #ワークウエア #フレンチヴィンテージ</div>
                                 <div class="buy">
-                                    <div class="price">$588</div>
+                                    <div class="price">$300</div>
                                     <button type="button">Detail</button>
                                 </div>
                             </div>
@@ -29,7 +77,7 @@
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="thumbnail">
-                                <img src="../assets/product2.jpg">
+                                <img src="../assets/product8.jpg">
                             </div>
                             <div class="info">
                                 <h4 class="title">French Army Motorcycle Coat 1940s</h4>
@@ -44,7 +92,7 @@
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="thumbnail">
-                                <img src="../assets/product3.jpg">
+                                <img src="../assets/product9.jpg">
                             </div>
                             <div class="info">
                                 <h4 class="title">France workwear #1900s</h4>
@@ -58,54 +106,6 @@
                     </div>
                 </div>
                 <div class="row">
-                        <h2>Latest Arrival</h2>
-                        <div class="col-lg-4">
-                            <div class="card">
-                                <div class="thumbnail">
-                                    <img src="../assets/product4.jpg">
-                                </div>
-                                <div class="info">
-                                    <h4 class="title">French Double Breasted Work Jackets 1950’s</h4>
-                                    <div class="desc"> #France #french #vintageworkwear #frenchmilitary #militaryclothing #ww2 #menswear #ワークジャケット #ワークウエア #フレンチヴィンテージ</div>
-                                    <div class="buy">
-                                        <div class="price">$300</div>
-                                        <button type="button">Detail</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="thumbnail">
-                                        <img src="../assets/product2.jpg">
-                                    </div>
-                                    <div class="info">
-                                        <h4 class="title">French Army Motorcycle Coat 1940s</h4>
-                                        <div class="desc">#France #french #vintageworkwear #frenchmilitary #militaryclothing #ww2 #menswear #ワークジャケット #ワークウエア #フレンチヴィンテージ</div>
-                                        <div class="buy">
-                                            <div class="price">$588</div>
-                                            <button type="button">Detail</button>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="card">
-                                <div class="thumbnail">
-                                    <img src="../assets/product3.jpg">
-                                </div>
-                                <div class="info">
-                                    <h4 class="title">France workwear #1900s</h4>
-                                    <div class="desc">#turnofthecentury #frenchpeasant #peasantworkwear #frenchwork #farmer #sackcoat #frenchworkwear #frenchchore #インディゴリネン</div>
-                                    <div class="buy">
-                                        <div class="price">$588</div>
-                                        <button type="button">Detail</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-                <div class="row">
                     <h2>Latest Arrival</h2>
                     <div class="col-lg-4">
                         <div class="card">
@@ -116,7 +116,7 @@
                                 <h4 class="title">French Double Breasted Work Jackets 1950’s</h4>
                                 <div class="desc">#France #french #vintageworkwear #frenchmilitary #militaryclothing #ww2 #menswear #ワークジャケット #ワークウエア #フレンチヴィンテージ</div>
                                 <div class="buy">
-                                    <div class="price">$300</div>
+                                    <div class="price">$588</div>
                                     <button type="button">Detail</button>
                                 </div>
                             </div>

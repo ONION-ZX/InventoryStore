@@ -1,7 +1,7 @@
 <template>
     <div class="nav-container">
         <div class="col-lg-3 logo left">
-            <img src="../assets/logo.png">
+            <router-link to="/"><img src="../assets/logo.png"></router-link>
         </div>
         <div class="col-lg-7 cat">
             <div class="nav">
@@ -91,6 +91,11 @@ img {
     color: rgba(0,0,0,.9);
     font-weight: bold;
 
+}
+
+.nav .nav-item:hover {
+    color: rgba(0,0,0,.9);
+    font-weight: bold;
 }
 
 .search {
