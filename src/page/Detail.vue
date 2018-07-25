@@ -112,7 +112,7 @@ export default {
         font-size: 12px;
         color: rgba(0,0,0,.4);
     }
-    .size, .content {
+    .size, .info .content {
         margin-top: 35px;
     }
     .size > * {

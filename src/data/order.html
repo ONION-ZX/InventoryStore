@@ -1,0 +1,35 @@
+<script src="../../node_modules/axios/dist/axios.js"></script>
+<script src="./api.js"></script>
+
+<script>
+    let model = {
+        name: 'order',
+        structure: {
+            product_info: { //订单中商品信息
+                type: 'json',
+                nullable: true,
+            },
+            pay_by: { //支付方式
+                type: 'text',
+                nullable: true,
+            },
+            memo: { //订单备注
+                type: 'text',
+                nullable: true,
+            },
+            user_id: { //下单用户
+                type: 'integer',
+                nullable: true,
+            },
+            total_price: { //总价
+                type: 'float',
+                nullable: true,
+            },
+        }
+    }
+
+    // api('MODEL/DELETE', {name: 'order'});
+
+    // api('MODEL/CREATE', model);
+    // api('MODEL/READ', {name: 'order'})
+</script>

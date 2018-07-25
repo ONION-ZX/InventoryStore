@@ -1,6 +1,8 @@
 <template>
-    <div class="col-lg-12 footer right">
-        <span>© 2018 BLUEINGREEN</span>  
+    <div class="container">
+        <div class="col-lg-12 footer right">
+            <span>© 2018 BLUEINGREEN</span>  
+        </div>
     </div>
 </template>
 

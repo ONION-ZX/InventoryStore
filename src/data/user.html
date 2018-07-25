@@ -1,0 +1,40 @@
+<script src="../../node_modules/axios/dist/axios.js"></script>
+<script src="./api.js"></script>
+
+<script>
+  let model = {
+    name      : 'user',
+    structure : {
+      username  : { // 用户名
+        type     : 'string',
+        nullable : false,
+      },
+      password  : { // 密码
+        type     : 'string',
+        nullable : false,
+      },
+      real_name : { // 真实姓名
+        type     : 'string',
+        nullable : true,
+      },
+      phone  : { // 手机号
+        type     : 'string',
+        nullable : true,
+      },
+      email  : { // 邮箱
+        type     : 'string',
+        nullable : true,
+      },
+      location  : { // 收货地址
+        type     : 'string',
+        nullable : true,
+      },
+    },
+  };
+
+//   api('MODEL/CREATE', model);
+
+  api('MODEL/READ', { name : 'user' });
+
+  // api('MODEL/DELETE', { name : 'model' });
+</script>

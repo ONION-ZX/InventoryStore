@@ -1,0 +1,48 @@
+<script src="../../node_modules/axios/dist/axios.js"></script>
+<script src="./api.js"></script>
+
+<script>
+  let model = {
+    name      : 'product',
+    structure : {
+      title  : { //标题
+        type     : 'string',
+        nullable : true,
+      },
+      price  : { //价格
+        type     : 'float',
+        nullable : true,
+      },
+      no  : { //货号
+        type     : 'string',
+        nullable : true,
+      },
+      brand_id: { //品牌
+          type: 'integer',
+          nullable: true,
+      },
+      stock : { // 库存
+        type     : 'string',
+        nullable : true,
+      },
+      location  : { // 收货地址
+        type     : 'string',
+        nullable : true,
+      },
+      on_sale: { //是否促销
+        type     : 'boolean',
+        nullable : true,
+      },
+      chart_id: { //
+        type: 'integer',
+        nullable: true,
+      },
+    },
+  };
+
+  // api('MODEL/CREATE', model);
+
+//   api('MODEL/READ', { name : 'user' });
+
+  // api('MODEL/DELETE', { name : 'product' });
+</script>
