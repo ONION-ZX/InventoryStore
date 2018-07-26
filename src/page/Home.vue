@@ -7,7 +7,6 @@
             </div>
             <span class="desc">ANCIENS VÊTEMENTS DE MÉTIERS, TENUES OUVRIÈRES, DE CORVÉE, CURIOSITÉS VESTIMENTAIRES OPULAIRES...</span>
             <!-- <img src="../assets/sub-bg.jpg">  -->
-
         </div>
         <div class="main">
             <div class="cat-item">
@@ -180,6 +179,10 @@ export default {
     .slider,
     .main {
         padding-top: 10px;
+    }
+    .slider img {
+        margin-left: auto;
+        margin-right: auto;
     }
     .card {
         margin-right: 5px;

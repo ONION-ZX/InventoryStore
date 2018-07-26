@@ -1,3 +1,7 @@
+button.active {
+    background: rgba(0, 0, 0, .3);
+    color: #fff;
+}
 .content-card {
   background: #fff;
   padding-left: 15px;
@@ -112,3 +116,4 @@
   .btn-group.operate .btn-small:first-child {
       border-right: 0;
   }
+

@@ -97,7 +97,7 @@ export default {
 }
 </script>
 
-<style scpoed>
+<style scoped>
     h2 {
         margin-top: 20px;
         margin-bottom: 20px;

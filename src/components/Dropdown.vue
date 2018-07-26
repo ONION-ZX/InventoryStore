@@ -73,6 +73,11 @@
         };
       },
 
+      on_edit(row) {
+        if(!row)
+          this.selected = {};
+        this.selected = row;
+      },
       /**
        * 重置组件
        */

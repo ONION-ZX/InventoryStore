@@ -82,8 +82,12 @@
         this.current = row;
         this.show_form = true;
         this.$nextTick(() => {
-          this.$refs.edit_design.on_edit(row.$design);
-          this.$refs.edit_brand.on_edit(row.$brand);
+          if(this.model == 'product') {
+            this.$refs.edit_size.on_edit(row.$size);
+            this.$refs.edit_color.on_edit(row.$color);
+            this.$refs.edit_brand.on_edit(row.$brand);
+            this.$refs.edit_fabric.on_edit(row.$fabric);
+          } else return;
         });
       },
       is_update() {

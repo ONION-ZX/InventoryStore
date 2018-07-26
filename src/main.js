@@ -11,9 +11,9 @@ import User from './page/admin/User';
 import Product from './page/admin/Product';
 import Order from './page/admin/Order';
 import Brand from './page/admin/Brand';
-
-
-
+import Size from './page/admin/Size';
+import Fabric from './page/admin/Fabric';
+import Color from './page/admin/Color';
 
 import Router from 'vue-router';
 
@@ -31,6 +31,10 @@ const router = new Router({
         { path: 'product', component: Product},
         { path: 'order', component: Order},
         { path: 'brand', component: Brand},
+        { path: 'size', component: Size},
+        { path: 'fabric', component: Fabric},
+        { path: 'color', component: Color},
+
       ],
     },
   ]
