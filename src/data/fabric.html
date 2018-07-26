@@ -1,0 +1,20 @@
+<script src="../../node_modules/axios/dist/axios.js"></script>
+<script src="./api.js"></script>
+
+<script>
+  let model = {
+    name      : 'fabric',
+    structure : {
+      name  : { //棉 麻 ...
+        type     : 'string',
+        nullable : true,
+      },
+    },
+  };
+
+//   api('MODEL/CREATE', model);
+
+  api('MODEL/READ',{name: 'fabric'});
+
+//   api('MODEL/DELETE', { name : 'size' });
+</script>

@@ -21,6 +21,18 @@
           type: 'integer',
           nullable: true,
       },
+      size_id: { //尺码
+          type: 'integer',
+          nullable: true,
+      },
+      fabric_id: { //面料
+          type: 'integer',
+          nullable: true,
+      },
+      color_id: { //颜色
+          type: 'integer',
+          nullable: true,
+      },
       stock : { // 库存
         type     : 'string',
         nullable : true,
@@ -33,16 +45,12 @@
         type     : 'boolean',
         nullable : true,
       },
-      chart_id: { //
-        type: 'integer',
-        nullable: true,
-      },
     },
   };
 
   // api('MODEL/CREATE', model);
 
-//   api('MODEL/READ', { name : 'user' });
+  api('MODEL/READ', { name : 'user' });
 
   // api('MODEL/DELETE', { name : 'product' });
 </script>

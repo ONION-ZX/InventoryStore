@@ -1,0 +1,20 @@
+<script src="../../node_modules/axios/dist/axios.js"></script>
+<script src="./api.js"></script>
+
+<script>
+  let model = {
+    name      : 'size',
+    structure : {
+      name  : { //S M L XL XXL XXXXL 
+        type     : 'string',
+        nullable : true,
+      },
+    },
+  };
+
+  api('MODEL/CREATE', model);
+
+//   api('MODEL/READ');
+
+//   api('MODEL/DELETE', { name : 'size' });
+</script>
