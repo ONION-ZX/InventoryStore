@@ -34,7 +34,6 @@ const router = new Router({
         { path: 'size', component: Size},
         { path: 'fabric', component: Fabric},
         { path: 'color', component: Color},
-
       ],
     },
   ]

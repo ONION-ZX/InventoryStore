@@ -33,19 +33,19 @@
                     </div>
                     <div class="input-control disib">
                         <label>品牌</label>
-                        <Dropdown :onSelect="read" ref="edit_brand" :api="'brand.name'" :list = "list"/>
+                        <Dropdown :onSelect="set_brand_id" ref="edit_brand" :api="'brand.name'" :list = "list"/>
                     </div>
                     <div class="input-control disib">
                         <label>尺码</label>
-                        <Dropdown ref="edit_size" :api="'size.name'" :list = "list"/>
+                        <Dropdown :onSelect="set_size_id" ref="edit_size" :api="'size.name'" :list = "list"/>
                     </div>
                     <div class="input-control disib">
                         <label>面料</label>
-                        <Dropdown ref="edit_fabric" :api="'fabric.name'" :list = "list"/>
+                        <Dropdown :onSelect="set_fabric_id" ref="edit_fabric" :api="'fabric.name'" :list = "list"/>
                     </div>
                     <div class="input-control disib">
                         <label>颜色</label>
-                        <Dropdown :onSelect="read" ref="edit_color" :api="'color.name'" :list = "list"/>
+                        <Dropdown :onSelect="set_color_id" ref="edit_color" :api="'color.name'" :list = "list"/>
                     </div>
                    <div class="input-control row">
                        <button class="btn btn-outline-secondary" type="submit">提交</button>
@@ -63,6 +63,7 @@
                         <th>颜色</th>
                         <th>库存</th>
                         <th>折扣</th>
+                        <th>操作</th>
                     </thead>
                     <tbody>
                         <tr :key="index" v-for="(row,index) in list">
@@ -104,9 +105,12 @@
 
   export default {
       mounted() {
-          this.read_then_set('brand');
-          this.read_then_set('size');
-          this.read_then_set('fabric');
+          this.read_by_model('brand');
+          this.read_by_model('size');
+          this.read_by_model('fabric');
+          this.read_by_model('color');
+        //   this.read_then_set('size');
+        //   this.read_then_set('fabric');
       },
        data() {
          return {
@@ -119,11 +123,24 @@
            with: [
                {type: 'has_one', model: 'brand'},
                {type: 'has_one', model: 'size'},
-               {type: 'has_one', model: 'fabric'},               
+               {type: 'has_one', model: 'fabric'},
+               {type: 'has_one', model: 'color'},               
            ],
          }
        },
        methods: {
+           set_brand_id(row) {
+            this.$set(this.current, 'brand_id', row.id);
+           },
+           set_size_id(row) {
+            this.$set(this.current, 'size_id', row.id);
+         },
+           set_fabric_id(row) {
+            this.$set(this.current, 'fabric_id', row.id);
+         },
+           set_color_id(row) {
+            this.$set(this.current, 'color_id', row.id);
+         },
            after_set_current() {
                this.current.preview = this.current.preview || []; 
            },

@@ -30,7 +30,12 @@
       };
     },
     methods    : {
-      
+      read_by_model(model) {
+        api(`${model}/read`)
+        .then(r => {
+          this[model] = r.data;
+        });
+      },
       on_page_change (page) {
         this.read(page);
       },

@@ -5,7 +5,7 @@
     <router-link class="nav-item" to="/admin/product">商品管理</router-link>
     <router-link class="nav-item" to="/admin/brand">品牌管理</router-link>
     <router-link class="nav-item" to="/admin/size">尺码管理</router-link>
-    <router-link class="nav-item" to="/admin/size">面料管理</router-link>
+    <router-link class="nav-item" to="/admin/fabric">面料管理</router-link>
     <router-link class="nav-item" to="/admin/color">颜色管理</router-link>
 
 
