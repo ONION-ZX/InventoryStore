@@ -70,8 +70,8 @@
                   <td>{{row.total_price || '-'}}</td>
                   <td>
                     <div class="btn-group operate">
-                      <button class="btn-small" @click="set_current(row)">编辑</button>
-                      <button class="btn-small" @click="remove(row.id)">删除</button>
+                      <button class="btn-small operate" @click="remove(row.id)">删除</button>
+                      <button class="btn-small operate" @click="update(row)">编辑</button>
                     </div>
                   </td>
                 </tr>

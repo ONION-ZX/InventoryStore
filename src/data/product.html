@@ -37,12 +37,8 @@
         type     : 'string',
         nullable : true,
       },
-      location  : { // 收货地址
+      discount: { //折扣
         type     : 'string',
-        nullable : true,
-      },
-      on_sale: { //是否促销
-        type     : 'boolean',
         nullable : true,
       },
     },
@@ -50,7 +46,7 @@
 
   // api('MODEL/CREATE', model);
 
-  api('MODEL/READ', { name : 'user' });
+  api('MODEL/READ', { name : 'product' });
 
   // api('MODEL/DELETE', { name : 'product' });
 </script>

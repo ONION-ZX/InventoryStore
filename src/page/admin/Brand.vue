@@ -20,8 +20,8 @@
                         <input v-validator="'required|max_length:64'" type="text" v-model="current.name">
                     </div>
                    <div class="input-control row">
-                       <button class="btn btn-outline-secondary" type="submit">提交</button>
-                       <button class="btn btn-outline-secondary" @click="show_form = false" type="button">取消</button>
+                       <button class="btn operate btn-outline-secondary" type="submit">提交</button>
+                       <button class="btn operate btn-outline-secondary" @click="show_form = false" type="button">取消</button>
                    </div>
                 </form>
                 <div class="table">
@@ -36,8 +36,10 @@
                             <td>{{row.name}}</td>
                             <td>{{row.id}}</td>
                             <td>
-                                <button class="btn-small operate" @click="remove(row.id)">删除</button>
-                                <button class="btn-small operate" @click="set_current(row)">编辑</button>
+                                <div class="btn-group operate">
+                                  <button class="btn-small operate" @click="remove(row.id)">删除</button>
+                                  <button class="btn-small operate" @click="update(row)">编辑</button>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
