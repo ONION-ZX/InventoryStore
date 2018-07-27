@@ -142,7 +142,7 @@
             this.$set(this.current, 'color_id', row.id);
          },
            after_set_current() {
-               this.current.preview = this.current.preview || []; 
+            this.current.preview = this.current.preview || []; 
            },
        },
        mixins: [AdminPage, Common],

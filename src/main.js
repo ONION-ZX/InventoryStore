@@ -6,6 +6,8 @@ import App from './App.vue';
 import Home from './page/Home';
 import Detail from './page/Detail';
 import Search from './page/Search';
+import NewOrder from './page/NewOrder';
+
 import AdminBase from './page/admin/Base';
 import User from './page/admin/User';
 import Product from './page/admin/Product';
@@ -23,7 +25,8 @@ const router = new Router({
   routes: [
     { path: '/', component: Home},
     { path: '/detail', component: Detail},   
-    { path: '/search', component: Search},       
+    { path: '/search', component: Search}, 
+    { path: '/new-order', component: NewOrder},       
     { path: '/admin', 
       component: AdminBase, 
       children: [

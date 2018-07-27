@@ -5,6 +5,9 @@
     max-width: 100%;
     display: block;
   }
+  a {
+    text-decoration: none;
+  }
   .container {
     max-width: 1200px;
     margin-left: auto;

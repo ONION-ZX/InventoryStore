@@ -48,6 +48,7 @@
                         <button>ONE SIZE</button>
                     </div>
                     <button class="cart" type="button">ADD TO CART</button>
+                    <router-link to="/new-order" class="purchase" >PURCHASE NOW</router-link>
                     <div class="content">
                         <div class="row cat">
                             <span class="col active">DETAIL</span>
@@ -132,22 +133,31 @@ export default {
         background: #fff;
         border: 1px solid rgba(0,0,0,.6);
     }
-    .size button:hover {
+    .size button:hover,
+    .purchase:hover,
+    .cart {
         background: rgba(0,0,0,.9);
         color: #fff;
     }
     .cart {
+        height: 35px;
+    }
+    
+    .cart, .purchase {
+        display: block;
         margin-top: 20px;
         width: 250px;
-        height: 35px;
-        background: rgba(0,0,0,.9);
         font-size: 13px;
-        color: #fff;
     }
-    .cart:hover {
+    .cart:hover,
+    .purchase {
         background: #fff;
         border: 1px solid rgba(0,0,0,.6);
         color: rgba(0,0,0,.6);
+    }
+    .purchase {
+        text-align: center;
+        padding: 5px 0;
     }
     .data {
         padding-left: 30px;
