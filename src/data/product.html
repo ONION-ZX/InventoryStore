@@ -41,12 +41,16 @@
         type     : 'string',
         nullable : true,
       },
+      preview: {
+        type: 'json',
+        nullable: true,
+      }
     },
   };
 
-  // api('MODEL/CREATE', model);
+  api('MODEL/CREATE', model);
 
-  api('MODEL/READ', { name : 'product' });
+  // api('MODEL/READ', { name : 'product' });
 
-  // api('MODEL/DELETE', { name : 'product' });
+  // api('MODEL/DELETE', { key : 'product' });
 </script>

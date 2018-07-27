@@ -80,6 +80,7 @@ button.active {
   .input-control label,
   .input-control input {
       display: block;
+      width: 100%;
   }
   .input-control:last-child {
       border-bottom: 0;

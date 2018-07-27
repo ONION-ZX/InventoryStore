@@ -120,8 +120,6 @@
           this.read_by_model('size');
           this.read_by_model('fabric');
           this.read_by_model('color');
-        //   this.read_then_set('size');
-        //   this.read_then_set('fabric');
       },
        data() {
          return {
