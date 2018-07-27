@@ -28,24 +28,35 @@
                         <input error-el="#title-error" v-validator="'required|min_length:4|max_length:64'" type="text" v-model="current.title">
                     </div>
                     <div class="input-control">
+                        <label>添加图片</label>
+                        <div style="margin-bottom: 5px">
+                            <div :key="i" v-for="(p,i) in current.preview">
+                                <input type="text" placeholder="描述" v-model="p.desc">
+                                <input type="url" placeholder="图片地址" v-model="p.url">
+                                <button type="button" @click="current.preview.splice(i,1)">-</button>
+                            </div>
+                            <button type="button" @click="current.preview.push({})">+</button>
+                        </div>
+                    </div>
+                    <div class="input-control">
                         <label>价格</label>
                         <input error-el="#price-error" v-validator="'positive'" type="number" v-model="current.price">
                     </div>
                     <div class="input-control disib">
                         <label>品牌</label>
-                        <Dropdown :onSelect="set_brand_id" ref="edit_brand" :api="'brand.name'" :list = "list"/>
+                        <Dropdown :onSelect="set_brand_id" ref="edit_brand" :api="'brand.name'" :list = "brand"/>
                     </div>
                     <div class="input-control disib">
                         <label>尺码</label>
-                        <Dropdown :onSelect="set_size_id" ref="edit_size" :api="'size.name'" :list = "list"/>
+                        <Dropdown :onSelect="set_size_id" ref="edit_size" :api="'size.name'" :list = "size"/>
                     </div>
                     <div class="input-control disib">
                         <label>面料</label>
-                        <Dropdown :onSelect="set_fabric_id" ref="edit_fabric" :api="'fabric.name'" :list = "list"/>
+                        <Dropdown :onSelect="set_fabric_id" ref="edit_fabric" :api="'fabric.name'" :list = "fabric"/>
                     </div>
                     <div class="input-control disib">
                         <label>颜色</label>
-                        <Dropdown :onSelect="set_color_id" ref="edit_color" :api="'color.name'" :list = "list"/>
+                        <Dropdown :onSelect="set_color_id" ref="edit_color" :api="'color.name'" :list = "color"/>
                     </div>
                    <div class="input-control row">
                        <button class="btn btn-outline-secondary" type="submit">提交</button>

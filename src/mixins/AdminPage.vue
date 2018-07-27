@@ -9,6 +9,7 @@
 
   import validator from '../directive/validator';
   import '../css/admin.css';
+import { log } from 'async';
 
   export default {
     directives: {validator},
@@ -49,6 +50,7 @@
           .then(() => {
             this.current = {};
             this.read();
+            alert('已添加!')
           });
       },
 

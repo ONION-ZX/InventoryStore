@@ -68,7 +68,7 @@ export default {
     methods: {
         find(id) {
             if(!id)
-                id = 2;
+                id = 1;
             api('product/find', {id})
             .then(r => {
                 this.product = r.data;
