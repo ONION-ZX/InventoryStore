@@ -25,7 +25,7 @@
                     </div> -->
                     <div class="input-control">
                         <label>标题</label>
-                        <input error-el="#title-error" v-validator="'required|min_length:4|max_length:64'" type="text" v-model="current.title">
+                        <input error-el="#title-error" v-validator="'required|min_length:4'" type="text" v-model="current.title">
                     </div>
                     <div class="input-control">
                         <label>添加图片</label>
@@ -41,6 +41,10 @@
                     <div class="input-control">
                         <label>价格</label>
                         <input error-el="#price-error" v-validator="'positive'" type="number" v-model="current.price">
+                    </div>
+                    <div class="input-control">
+                        <label>描述</label>
+                        <textarea placeholder="请描述你的商品..." error-el="#desc-error" v-validator="'required'" type="text" v-model="current.desc"></textarea>
                     </div>
                     <div class="input-control disib">
                         <label>品牌</label>
@@ -67,6 +71,7 @@
                     <thead>
                         <th>标题</th>
                         <th>价格</th>
+                        <th>描述</th>
                         <th>货号</th>
                         <th>品牌</th>
                         <th>尺码</th>
@@ -80,6 +85,7 @@
                         <tr :key="index" v-for="(row,index) in list">
                             <td>{{row.title}}</td>
                             <td>{{row.price ? row.price : '-'}}</td>
+                            <td>{{row.desc ? row.desc : '-'}}</td>
                             <td>{{row.no ? row.no : '-'}}</td>
                             <td>{{row.$brand ? row.$brand.name : '-'}}</td>
                             <td>{{row.$size ? row.$size.name : '-'}}</td>
@@ -109,12 +115,15 @@
 /* eslint-disable */
 
   import api from "../../lib/api";
+  import validator from "../../directive/validator";
   import Common from '../../mixins/Common';  
   import AdminPage from '../../mixins/AdminPage';
   import Dropdown  from "../../components/Dropdown";
 
 
   export default {
+      mixins: [AdminPage, Common],
+      directives: { validator },
       mounted() {
           this.read_by_model('brand');
           this.read_by_model('size');
@@ -154,7 +163,6 @@
             this.current.preview = this.current.preview || []; 
            },
        },
-       mixins: [AdminPage, Common],
   }
 </script>
 
@@ -170,6 +178,9 @@
  .disib label {
      padding-left: 10px;
      padding-bottom: 5px;
+ }
+ textarea {
+     margin-top: 8px;
  }
 </style>
 

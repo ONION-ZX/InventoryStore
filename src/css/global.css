@@ -8,6 +8,10 @@
   a {
     text-decoration: none;
   }
+  textarea {
+    border: 0;
+    outline: 0;
+  }
   .container {
     max-width: 1200px;
     margin-left: auto;

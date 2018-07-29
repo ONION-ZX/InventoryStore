@@ -24,7 +24,7 @@ Vue.use(Router);
 const router = new Router({
   routes: [
     { path: '/', component: Home},
-    { path: '/detail', component: Detail},   
+    { path: '/detail/:id', component: Detail},   
     { path: '/search', component: Search}, 
     { path: '/new-order', component: NewOrder},       
     { path: '/admin', 

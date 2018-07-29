@@ -3,10 +3,10 @@
 
   export default {
     methods : {
-      get_main_cover_url (row) {
+      get_thumbnail (row) {
         return row.preview && row.preview[ 0 ] && row.preview[ 0 ].url ?
                row.preview[ 0 ].url :
-               'https://image1.guazistatic.com/qn180618155102242081e88c459a11926744030df0971b.jpg?imageView2/1/w/287/h/192/q/88';
+               'https://upload-images.jianshu.io/upload_images/13340525-1244fa2dcf49ee65.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240';
       },
     },
   };</script>

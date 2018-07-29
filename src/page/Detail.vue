@@ -40,8 +40,8 @@
                     </div> -->
                 </div>
                 <div class="col col-lg-6">
-                    <h2 class="title">French Double Breasted Work Jackets 1950’s</h2>
-                    <div class="price">$ 64.80</div>
+                    <h2 class="title">{{detail.title}}</h2>
+                    <div class="price">$ {{detail.price}}</div>
                     <div class="memo">You Save 70% ($ 151.20)</div>
                     <div class="size">
                         <label>SIZE</label>
@@ -91,10 +91,31 @@
 </template>
 
 <script>
+import api from '../lib/api';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 export default {
     components: {Nav, Footer},
+    data() {
+        return {
+            detail: {},
+        }
+    },
+    mounted() {
+        let id = this.get_product_id();
+        this.find(id);
+    },
+    methods: {
+        find(id) {
+            api('product/find', {id})
+                .then(r => {
+                    this.detail = r.data;
+                })
+        },
+        get_product_id() {
+            return this.$route.params.id;
+        }
+    }
 }
 </script>
 

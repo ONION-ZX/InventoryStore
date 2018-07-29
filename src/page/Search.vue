@@ -33,18 +33,18 @@
                 </div>
                 <div class="col col-lg-9">
                     <div class="row">
-                        <div class="col-lg-3">
+                        <div :key="index" v-for="(row, index) in result" class="col-lg-3">
                             <div class="card">
                                 <div class="thumbnail">
-                                    <img src="../assets/search/search2.jpg">
+                                    <img :src="get_main_cover_url(row)">
                                 </div>
                                 <div class="prev">
-                                    <div class="title">Denim ORTEGA Patchwork Tote Bag - IDG</div>
-                                    <div class="price">$ 372.00</div>
+                                    <div class="title">{{row.title}}</div>
+                                    <div class="price">{{row.price}}</div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <!-- <div class="col-lg-3">
                             <div class="card">
                                 <div class="thumbnail">
                                     <img src="../assets/search/search1.jpg">
@@ -169,6 +169,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div> -->
                     </div>
                 </div>
             </div>
@@ -180,8 +181,19 @@
 <script>
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
+import ProductList from '../mixins/ProductList';
 export default {
     components: {Nav, Footer},
+    data() {
+        return {
+            result: [],
+            list: {},
+        }
+    },
+    methods: {
+
+    },
+    mixins: [ProductList],
 }
 </script>
 
