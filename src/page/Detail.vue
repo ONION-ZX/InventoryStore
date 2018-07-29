@@ -14,7 +14,7 @@
             <div class="row info">
                 <div class="col col-lg-6">
                     <div class="product_flickity">
-                        <img src="../assets/product/product1.jpg">
+                        <img :src="get_thumbnail(detail)">
                     </div>
                     <!-- <div class="product_gallery">
                         <div class="col-lg-3">
@@ -40,15 +40,20 @@
                     </div> -->
                 </div>
                 <div class="col col-lg-6">
-                    <h2 class="title">{{detail.title}}</h2>
+                    <h1 class="title">{{detail.title}}</h1>
                     <div class="price">$ {{detail.price}}</div>
                     <div class="memo">You Save 70% ($ 151.20)</div>
                     <div class="size">
                         <label>SIZE</label>
                         <button>ONE SIZE</button>
                     </div>
+                    <div class="count">
+                        <button @click="minus">-</button>
+                        <input type="text" v-model.number="count">
+                        <button @click="add">+</button>
+                    </div>
                     <button class="cart" type="button">ADD TO CART</button>
-                    <router-link to="/new-order" class="purchase" >PURCHASE NOW</router-link>
+                    <router-link :to="'/new-order/' + this.$route.params.id" class="purchase" >PURCHASE NOW</router-link>
                     <div class="content">
                         <div class="row cat">
                             <span class="col active">DETAIL</span>
@@ -92,13 +97,16 @@
 
 <script>
 import api from '../lib/api';
+import ProductList from '../mixins/ProductList';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 export default {
     components: {Nav, Footer},
+    mixins: [ProductList ],
     data() {
         return {
             detail: {},
+            count: 0,
         }
     },
     mounted() {
@@ -114,12 +122,22 @@ export default {
         },
         get_product_id() {
             return this.$route.params.id;
-        }
+        },
+        add() {
+            this.count ++;
+        },
+        minus() {
+            if(this.count >= 1)
+                return --this.count;
+        },
     }
 }
 </script>
 
 <style scoped>
+    button, .purchase {
+        border-radius: 4px;
+    }
     h2 {
         margin-top: 20px;
         margin-bottom: 20px;
@@ -146,13 +164,32 @@ export default {
     }
     .size button {
         font-weight: bold;
-        border-radius: 4px;
         font-size: 14px;
         margin-top: 10px;
         height: 40px;
         min-width: 80px;
         background: #fff;
         border: 1px solid rgba(0,0,0,.6);
+    }
+    .count {
+        margin-top: 10px;
+    }
+    .count > * {
+        height: 30px;
+        vertical-align: bottom;
+    }
+    .count input {
+        padding: 0;
+        text-align: center;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        /* border-bottom: 1px solid rgba(0,0,0,.3); */
+
+    }
+    .count button {
+        border-radius: 0;
+        line-height: 1;
     }
     .size button:hover,
     .purchase:hover,

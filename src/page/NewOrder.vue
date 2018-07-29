@@ -39,8 +39,8 @@ export default {
         // api('order/update', {
         //     id: 1,
         //     price: 100,
-        // });
-        this.current = Object.assign({}, this.current, this.$route.query);
+        // })
+
         this.find(this.current.product_id);
     },
     data() {
@@ -66,6 +66,9 @@ export default {
         },
     },
     methods: {
+        get_product_id() {
+            this.current.product_id = this.$route.params.id;
+        },
         find(id) {
             if(!id)
                 id = 1;

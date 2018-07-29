@@ -26,7 +26,7 @@ const router = new Router({
     { path: '/', component: Home},
     { path: '/detail/:id', component: Detail},   
     { path: '/search', component: Search}, 
-    { path: '/new-order', component: NewOrder},       
+    { path: '/new-order/:id', component: NewOrder},       
     { path: '/admin', 
       component: AdminBase, 
       children: [

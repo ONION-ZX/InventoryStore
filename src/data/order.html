@@ -5,8 +5,8 @@
     let model = {
         name: 'order',
         structure: {
-            product_info: { //订单中商品信息
-                type: 'json',
+            product_id: { //订单中商品信息
+                type: 'integer',
                 nullable: true,
             },
             pay_by: { //支付方式
@@ -34,6 +34,6 @@
 
     // api('MODEL/DELETE', {name: 'order'});
 
-    // api('MODEL/CREATE', model);
-    api('MODEL/READ', {name: 'order'})
+    api('MODEL/CREATE', model);
+    // api('MODEL/READ', {name: 'order'})
 </script>
