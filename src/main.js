@@ -6,10 +6,14 @@ import Vue from 'vue';
 import App from './App.vue';
 import Home from './page/Home';
 import Detail from './page/Detail';
+import Me from './page/Me';
+import MeSetting from './page/MeSetting';
+import MeOrder from './page/MeOrder';
+
+
 import Search from './page/Search';
 import NewOrder from './page/NewOrder';
 import Pay from './page/Pay';
-
 import Login from './page/Login';
 import Signup from './page/Signup';
 
@@ -30,7 +34,12 @@ Vue.use(Router);
 const router = new Router({
   routes: [
     { path: '/', component: Home},
-    { path: '/detail/:id', component: Detail},   
+    { path: '/detail/:id', component: Detail}, 
+    { path: '/me', component: Me},  
+    { path: '/me/setting', component: MeSetting},  
+    { path: '/me/order', component: MeOrder},  
+
+
     { path: '/search', component: Search}, 
     { path: '/login', component: Login}, 
     { path: '/signup', component: Signup}, 

@@ -64,7 +64,7 @@
             this.go_me_order();
           }
 
-          this.pay(row.id, pay_by, row.total_price);
+          this.pay(row.id, pay_by, row.sum);
 
           this.current = r.data || {};
         });
