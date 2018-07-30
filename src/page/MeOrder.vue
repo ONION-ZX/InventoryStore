@@ -71,7 +71,7 @@
       show_detail (row) {
         this.current        = row;
         this.detail_visible = true;
-        this.find_product(row.product_info);
+        this.find_product(row.product_id);
       },
 
       find_product (product_id) {
