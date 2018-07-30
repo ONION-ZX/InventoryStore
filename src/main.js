@@ -1,12 +1,15 @@
 import './css/global.css';
 import '../node_modules/@fortawesome/fontawesome-free/js/all.js';
 
+
 import Vue from 'vue';
 import App from './App.vue';
 import Home from './page/Home';
 import Detail from './page/Detail';
 import Search from './page/Search';
 import NewOrder from './page/NewOrder';
+import Pay from './page/Pay';
+
 import Login from './page/Login';
 import Signup from './page/Signup';
 
@@ -31,7 +34,9 @@ const router = new Router({
     { path: '/search', component: Search}, 
     { path: '/login', component: Login}, 
     { path: '/signup', component: Signup}, 
-    { path: '/new-order', component: NewOrder},       
+    { path: '/new-order', component: NewOrder},  
+    { path: '/pay/:oid', component: Pay},       
+
     { path: '/admin', 
       component: AdminBase, 
       children: [

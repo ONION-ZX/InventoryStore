@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut delectus autem quam eveniet magnam, laudantium facere quaerat rerum repellat nisi explicabo, aut accusamus aliquam, qui maxime voluptate eius. Praesentium, expedita?</div>
+</div>
+<div class="container">
+        <div class="login">
+            <form @submit="submit($event)" class="main_form" autocomplete="off">
+                <h2>登录</h2>
+                <div v-if="login_failed" class="error-list">
+                    <div class="error">用户名或密码有误</div>
+                </div>
+                <div>
+                    <label for="用户名">用户名/手机号/邮箱</label>
+                    <input v-focus v-model="current.$unique" v-validator="'required'" type="text">
+                </div>
+                <div>
+                    <label for="密码">密码</label>
+                    <input v-validator="'required'" v-model="current.password" type="password">
+                </div>
+                <button type="submit" class="db">登录</button>
+                <span>没有账号?<router-link to="/signup">注册</router-link></span>
+            </form>
+        </div>
+
+<style>
+    .container {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .main_form {
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
