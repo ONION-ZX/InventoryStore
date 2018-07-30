@@ -4,6 +4,7 @@
             <h1>下单</h1>
             <div>{{product.title}}</div>
             <div>单价:{{product.price}}</div>
+            <div>数量:{{current.count}}</div>
             <div>总价:{{total}}</div>
             <div>
                 <h3>支付方式</h3>
@@ -40,8 +41,8 @@ export default {
         //     id: 1,
         //     price: 100,
         // })
-
-        this.find(this.current.product_id);
+        this.get_product_id();
+        this.find(this.current.id);
     },
     data() {
         return {
@@ -67,7 +68,7 @@ export default {
     },
     methods: {
         get_product_id() {
-            this.current.product_id = this.$route.params.id;
+            this.current = this.$route.query;
         },
         find(id) {
             if(!id)

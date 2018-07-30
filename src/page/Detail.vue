@@ -53,7 +53,7 @@
                         <button @click="add">+</button>
                     </div>
                     <button class="cart" type="button">ADD TO CART</button>
-                    <router-link :to="'/new-order/' + this.$route.params.id" class="purchase" >PURCHASE NOW</router-link>
+                    <router-link :to="new_order()" class="purchase" >PURCHASE NOW</router-link>
                     <div class="content">
                         <div class="row cat">
                             <span class="col active">DETAIL</span>
@@ -122,6 +122,15 @@ export default {
         },
         get_product_id() {
             return this.$route.params.id;
+        },
+        new_order() {
+            return {
+                path: '/new-order',
+                query: {
+                    id: this.$route.params.id,
+                    count: this.count,
+                }
+            }
         },
         add() {
             this.count ++;

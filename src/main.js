@@ -7,6 +7,9 @@ import Home from './page/Home';
 import Detail from './page/Detail';
 import Search from './page/Search';
 import NewOrder from './page/NewOrder';
+import Login from './page/Login';
+import Signup from './page/Signup';
+
 
 import AdminBase from './page/admin/Base';
 import User from './page/admin/User';
@@ -26,7 +29,9 @@ const router = new Router({
     { path: '/', component: Home},
     { path: '/detail/:id', component: Detail},   
     { path: '/search', component: Search}, 
-    { path: '/new-order/:id', component: NewOrder},       
+    { path: '/login', component: Login}, 
+    { path: '/signup', component: Signup}, 
+    { path: '/new-order', component: NewOrder},       
     { path: '/admin', 
       component: AdminBase, 
       children: [
