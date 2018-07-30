@@ -34,6 +34,8 @@ Vue.use(Router);
 const router = new Router({
   routes: [
     { path: '/', component: Home},
+    { path: '/login', component: Login},
+    { path: '/signup', component: Signup}, 
     { path: '/detail/:id', component: Detail},  
     { path: '/search', component: Search}, 
     { path: '/login', component: Login}, 

@@ -121,6 +121,7 @@
       },
 
       update_password () {
+          console.log(1);
         return api('user/update', {
           id       : this.current.id,
           password : this.password.new,

@@ -10,7 +10,7 @@
                     </div>
                     <div>
                         <label for="用户名">用户名/手机号/邮箱</label>
-                        <input v-focus v-model="current.$unique" v-validator="'required'" type="text">
+                        <input v-model="current.$unique" v-validator="'required'" type="text">
                     </div>
                     <div>
                         <label for="密码">密码</label>
