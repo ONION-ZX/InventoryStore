@@ -34,17 +34,19 @@ Vue.use(Router);
 const router = new Router({
   routes: [
     { path: '/', component: Home},
-    { path: '/detail/:id', component: Detail}, 
-    { path: '/me', component: Me},  
-    { path: '/me/setting', component: MeSetting},  
-    { path: '/me/order', component: MeOrder},  
-
-
+    { path: '/detail/:id', component: Detail},  
     { path: '/search', component: Search}, 
     { path: '/login', component: Login}, 
     { path: '/signup', component: Signup}, 
     { path: '/new-order', component: NewOrder},  
-    { path: '/pay/:oid', component: Pay},       
+    { path: '/pay/:oid', component: Pay},    
+    { path: '/me', 
+      component: Me,
+      children: [
+        { path: 'setting', component: MeSetting},  
+        { path: 'order', component: MeOrder}, 
+      ]
+     },   
 
     { path: '/admin', 
       component: AdminBase, 

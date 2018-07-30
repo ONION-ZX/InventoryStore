@@ -30,25 +30,6 @@
 </script>
 
 <style scoped>
-  .main-form {
-    margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .footer {
-    margin-top: 20px;
-  }
-
-  .tab-title {
-    color: #777;
-    margin-bottom: 10px;
-  }
-
-  .tab-title > * {
-    cursor: pointer;
-    padding: 5px;
-  }
   .nav-item {
     display: block;
     text-decoration: none;
