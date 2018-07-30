@@ -31,18 +31,18 @@
     <div v-if="detail_visible" class="modal">
       <div @click="detail_visible=false" class="mask"></div>
       <div class="card modal-content">
-        <h2>{{pet.title}}</h2>
+        <h2>{{product.title}}</h2>
         <div class="cute-form">
           <span class="key">价格</span>
-          <span class="value">{{pet.price || '-'}}</span>
+          <span class="value">{{product.price || '-'}}</span>
         </div>
         <div class="cute-form">
           <span class="key">性别</span>
-          <span class="value">{{pet.sex || '-'}}</span>
+          <span class="value">{{product.sex || '-'}}</span>
         </div>
         <div class="cute-form">
           <span class="key">品种</span>
-          <span class="value">{{pet.breed_id || '-'}}</span>
+          <span class="value">{{product.breed_id || '-'}}</span>
         </div>
       </div>
     </div>
@@ -61,7 +61,7 @@
     data () {
       return {
         current        : {},
-        pet            : {},
+        product            : {},
         list           : [],
         detail_visible : false,
       };
@@ -71,13 +71,13 @@
       show_detail (row) {
         this.current        = row;
         this.detail_visible = true;
-        this.find_pet(row.product_info);
+        this.find_product(row.product_info);
       },
 
-      find_pet (pet_id) {
-        api('pet/find', { id : pet_id })
+      find_product (product_id) {
+        api('product/find', { id : product_id })
           .then(r => {
-            this.pet = r.data;
+            this.product = r.data;
           });
       },
 
