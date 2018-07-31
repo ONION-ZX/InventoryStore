@@ -1,7 +1,10 @@
 import './css/global.css';
+import './css/swiper.css';
+
 import '../node_modules/@fortawesome/fontawesome-free/js/all.js';
 
-
+//swiper
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 import Vue from 'vue';
 import App from './App.vue';
 import Home from './page/Home';
@@ -32,6 +35,8 @@ import Swiper from './page/admin/Swiper';
 import Router from 'vue-router';
 
 Vue.use(Router);
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
+
 
 const router = new Router({
   routes: [

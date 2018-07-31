@@ -2,17 +2,24 @@
     <div class="container">
         <Nav/>
         <div class="slider">
-            <div class="img">
-               <img src="../assets/main.jpg"> 
-            </div>
-            <span class="desc">ANCIENS VÊTEMENTS DE MÉTIERS, TENUES OUVRIÈRES, DE CORVÉE, CURIOSITÉS VESTIMENTAIRES OPULAIRES...</span>
-            <!-- <img src="../assets/sub-bg.jpg">  -->
+            <swiper :options="swiperOption">
+                <swiper-slide v-for="(it, index) in swiper" :key="index">
+                    <img :src="it.name" :alt="it.desc">
+                </swiper-slide>
+                <div class="swiper-pagination" slot="pagination"></div>
+            </swiper>
         </div>
+        <!-- <div class="slider">
+            <div class="img" :key="i" v-for="(row,i) in swiper">
+               <img :src="row.name"> 
+            <span class="desc">{{row.desc}}</span>
+            </div>
+        </div> -->
         <div class="main">
             <div class="cat-item">
                 <div class="row">
                     <h2>Latest Arrival</h2>
-                    <div :key="i" class="col-lg-3" v-for="(row,i) in main_list">
+                    <div :key="i" class="col-lg-3" v-for="(row,i) in product">
                         <div class="card">
                             <div class="thumbnail">
                                 <img :src="get_thumbnail(row)">
@@ -23,7 +30,7 @@
                                 <div class="buy">
                                     <div class="price">${{row.price}}</div>
                                     <button>
-                                    <router-link :to="'/detail/'+row.id">Detail</router-link>
+                                    <router-link :to="'/detail/'+ row.id">Detail</router-link>
                                     </button>
                                 </div>
                             </div>
@@ -45,22 +52,44 @@ import ProductList from '../mixins/ProductList';
 export default {
     components: {Nav, Footer},
     mounted() {
-        this.read();
+        // this.read();
+        // this.read_swiper();
+        this.read_by_model('product');
+        this.read_by_model('swiper');
     },
     data() {
         return {
-            main_list: [],
+            product: [],
+            swiper: [],
+            swiperOption : {
+                // keyboard   : true,
+                // mousewheel : true,
+                // clickable  : false,
+                // loop       : true,
+                autoplay   : true,
+                pagination : {
+                    el : '.swiper-pagination',
+                },
+            },
+            // swiperSlides : [ 1, 2, 3 ],
         }
     },
     methods: {
-        read() {
-            api('product/read')
-                .then(r => {
-                    this.main_list = r.data;
-                })
-        }
+        read_by_model(model) {
+            api(`${model}/read`)
+            .then(r => {
+            this[model] = r.data;
+            });
+        },
+        // read() {
+        //     api('swiper/read')
+        //         .then(r => {
+        //             this.main_list = r.data;
+        //         })
+        // },
+        
     },
-    mixins: [ ProductList ],
+    mixins: [ ProductList],
 }
 </script>
 
