@@ -26,6 +26,8 @@ import Brand from './page/admin/Brand';
 import Size from './page/admin/Size';
 import Fabric from './page/admin/Fabric';
 import Color from './page/admin/Color';
+import Swiper from './page/admin/Swiper';
+
 
 import Router from 'vue-router';
 
@@ -60,6 +62,7 @@ const router = new Router({
         { path: 'size', component: Size},
         { path: 'fabric', component: Fabric},
         { path: 'color', component: Color},
+        { path: 'swiper', component: Swiper},
       ],
     },
   ]

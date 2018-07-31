@@ -57,7 +57,6 @@ export default {
             api('product/read')
                 .then(r => {
                     this.main_list = r.data;
-                    console.log(this.main_list);
                 })
         }
     },

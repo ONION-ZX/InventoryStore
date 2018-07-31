@@ -7,6 +7,8 @@
     <router-link class="nav-item" to="/admin/size">尺码管理</router-link>
     <router-link class="nav-item" to="/admin/fabric">面料管理</router-link>
     <router-link class="nav-item" to="/admin/color">颜色管理</router-link>
+    <router-link class="nav-item" to="/admin/swiper">轮播图管理</router-link>
+
 
 
     <!-- <router-link class="nav-item" to="/admin/chart">质量管理</router-link> -->
