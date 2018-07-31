@@ -22,7 +22,47 @@
             <div class="cat-item">
                 <div class="row">
                     <h2>Latest Arrival</h2>
-                    <div :key="i" class="col-lg-3" v-for="(row,i) in product">
+                    <div :key="i" class="col-lg-3" v-for="(row,i) in latest_arrival_list">
+                        <div class="card">
+                            <div class="thumbnail">
+                                <img :src="get_thumbnail(row)">
+                            </div>
+                            <div class="info">
+                                <h4 class="title">{{row.title}}</h4>
+                                <div class="desc">{{row.desc}}</div>
+                                <div class="buy">
+                                    <div class="price">${{row.price}}</div>
+                                    <button>
+                                    <router-link :to="'/detail/'+ row.id">Detail</router-link>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <h2>Hot Recommend</h2>
+                    <div :key="i" class="col-lg-3" v-for="(row,i) in hot_list">
+                        <div class="card">
+                            <div class="thumbnail">
+                                <img :src="get_thumbnail(row)">
+                            </div>
+                            <div class="info">
+                                <h4 class="title">{{row.title}}</h4>
+                                <div class="desc">{{row.desc}}</div>
+                                <div class="buy">
+                                    <div class="price">${{row.price}}</div>
+                                    <button>
+                                    <router-link :to="'/detail/'+ row.id">Detail</router-link>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <h2>On Sale</h2>
+                    <div :key="i" class="col-lg-3" v-for="(row,i) in on_sale_list">
                         <div class="card">
                             <div class="thumbnail">
                                 <img :src="get_thumbnail(row)">
@@ -51,16 +91,21 @@ import api from '../lib/api';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import ProductList from '../mixins/ProductList';
+import { log } from 'async';
 
 export default {
     components: {Nav, Footer},
     mounted() {
-        this.read_by_model('product');
+        this.read_on_sale();
+        this.read_hot();
+        this.read_latest_arrival();
         this.read_by_model('swiper');
     },
     data() {
         return {
-            product: [],
+            on_sale_list: [],
+            hot_list: [],
+            latest_arrival_list: [],
             swiper: [],
             swiperOption : {
                 keyboard   : true,
@@ -80,6 +125,24 @@ export default {
             .then(r => {
             this[model] = r.data;
             });
+        },
+        read_on_sale() {
+            api('product/search', {where: {on_sale: true}})
+                .then(r => {
+                    this.on_sale_list = r.data;
+                });
+        },
+        read_hot() {
+            api('product/search', {where: {hot: true}})
+                .then(r => {
+                    this.hot_list = r.data;
+                });
+        },
+        read_latest_arrival() {
+            api('product/search', {where: {latest_arrival: true}})
+                .then(r => {
+                    this.latest_arrival_list = r.data;
+                });
         },
     },
     mixins: [ ProductList],
