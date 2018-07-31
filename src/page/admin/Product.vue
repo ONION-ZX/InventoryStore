@@ -62,6 +62,18 @@
                         <label>颜色</label>
                         <Dropdown :onSelect="set_color_id" ref="edit_color" :api="'color.name'" :list = "color"/>
                     </div>
+                    <div class="input-control">
+                        <label>是否促销</label>
+                        <input type="checkbox" v-model="current.on_sale">
+                    </div>
+                    <div class="input-control">
+                        <label>是否热卖</label>
+                        <input type="checkbox" v-model="current.hot">
+                    </div>
+                    <div class="input-control">
+                        <label>是否为新款</label>
+                        <input type="checkbox" v-model="current.latest_arrival">
+                    </div>
                    <div class="input-control row">
                        <button class="btn btn-outline-secondary" type="submit">提交</button>
                        <button class="btn btn-outline-secondary" @click="show_form = false" type="button">取消</button>
@@ -71,28 +83,34 @@
                     <thead>
                         <th>标题</th>
                         <th>价格</th>
-                        <th>描述</th>
-                        <th>货号</th>
+                        <!-- <th>描述</th> -->
+                        <!-- <th>货号</th> -->
                         <th>品牌</th>
                         <th>尺码</th>
                         <th>面料</th>
                         <th>颜色</th>
                         <th>库存</th>
                         <th>折扣</th>
+                        <th>是否促销</th>
+                        <th>是否热卖</th>
+                        <th>是否为新款</th>
                         <th>操作</th>
                     </thead>
                     <tbody>
                         <tr :key="index" v-for="(row,index) in list">
                             <td>{{row.title}}</td>
                             <td>{{row.price ? row.price : '-'}}</td>
-                            <td>{{row.desc ? row.desc : '-'}}</td>
-                            <td>{{row.no ? row.no : '-'}}</td>
+                            <!-- <td>{{row.desc ? row.desc : '-'}}</td> -->
+                            <!-- <td>{{row.no ? row.no : '-'}}</td> -->
                             <td>{{row.$brand ? row.$brand.name : '-'}}</td>
                             <td>{{row.$size ? row.$size.name : '-'}}</td>
                             <td>{{row.$fabric ? row.$fabric.name : '-'}}</td>
                             <td>{{row.$color ? row.$color.name : '-'}}</td>
                             <td>{{row.stock ? row.stock : 'SOLD-OUT'}}</td>
                             <td>{{row.discount ? '是': '否'}}</td>
+                            <td>{{row.on_sale ? '是': '否'}}</td>
+                            <td>{{row.hot ? '是': '否'}}</td>
+                            <td>{{row.latest_arrival ? '是': '否'}}</td>
                             <td>
                                 <div class="btn-group operate">
                                     <button class="btn-small operate" @click="remove(row.id)">删除</button>
@@ -142,7 +160,7 @@
                {type: 'has_one', model: 'brand'},
                {type: 'has_one', model: 'size'},
                {type: 'has_one', model: 'fabric'},
-               {type: 'has_one', model: 'color'},               
+               {type: 'has_one', model: 'color'},  
            ],
          }
        },

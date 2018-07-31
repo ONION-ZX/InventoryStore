@@ -4,9 +4,12 @@
         <div class="slider">
             <swiper :options="swiperOption">
                 <swiper-slide v-for="(it, index) in swiper" :key="index">
-                    <img :src="it.name" :alt="it.desc">
+                    <router-link to="/search">
+                        <img :src="it.name" :alt="it.desc">
+                    </router-link>
                 </swiper-slide>
                 <div class="swiper-pagination" slot="pagination"></div>
+
             </swiper>
         </div>
         <!-- <div class="slider">
@@ -52,8 +55,6 @@ import ProductList from '../mixins/ProductList';
 export default {
     components: {Nav, Footer},
     mounted() {
-        // this.read();
-        // this.read_swiper();
         this.read_by_model('product');
         this.read_by_model('swiper');
     },
@@ -62,16 +63,15 @@ export default {
             product: [],
             swiper: [],
             swiperOption : {
-                // keyboard   : true,
+                keyboard   : true,
                 // mousewheel : true,
-                // clickable  : false,
-                // loop       : true,
+                clickable  : false,
+                loop       : true,
                 autoplay   : true,
                 pagination : {
                     el : '.swiper-pagination',
                 },
             },
-            // swiperSlides : [ 1, 2, 3 ],
         }
     },
     methods: {
@@ -81,13 +81,6 @@ export default {
             this[model] = r.data;
             });
         },
-        // read() {
-        //     api('swiper/read')
-        //         .then(r => {
-        //             this.main_list = r.data;
-        //         })
-        // },
-        
     },
     mixins: [ ProductList],
 }
@@ -121,6 +114,7 @@ export default {
 
     .row {
         margin-top: 10px;
+        margin-bottom: 20px;
     }
 
     .row .info {
