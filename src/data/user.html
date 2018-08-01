@@ -32,9 +32,14 @@
     },
   };
 
+    api('PROPERTY/DELETE', {
+        model: 'user',
+        key: 'email',
+    })
+
 //   api('MODEL/CREATE', model);
 
-  api('MODEL/READ', { name : 'user' });
+  // api('MODEL/READ', { name : 'user' });
 
   // api('MODEL/DELETE', { name : 'model' });
 </script>

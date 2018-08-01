@@ -157,10 +157,10 @@
            model: 'product',
            searchable : ['title','description'],
            with: [
-               {type: 'has_one', model: 'brand'},
-               {type: 'has_one', model: 'size'},
-               {type: 'has_one', model: 'fabric'},
-               {type: 'has_one', model: 'color'},  
+               {relation: 'has_one', model: 'brand'},
+               {relation: 'has_one', model: 'size'},
+               {relation: 'has_one', model: 'fabric'},
+               {relation: 'has_one', model: 'color'},  
            ],
          }
        },

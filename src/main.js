@@ -23,6 +23,7 @@ import Signup from './page/Signup';
 
 import AdminBase from './page/admin/Base';
 import User from './page/admin/User';
+import Cart from './page/admin/Cart';
 import Product from './page/admin/Product';
 import Order from './page/admin/Order';
 import Brand from './page/admin/Brand';
@@ -68,6 +69,7 @@ const router = new Router({
         { path: 'fabric', component: Fabric},
         { path: 'color', component: Color},
         { path: 'swiper', component: Swiper},
+        { path: 'cart', component: Cart}, 
       ],
     },
   ]

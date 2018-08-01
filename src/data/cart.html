@@ -1,0 +1,29 @@
+<script src="../../node_modules/axios/dist/axios.js"></script>
+<script src="./api.js"></script>
+<script>
+  let model = {
+    name      : 'cart',
+    structure : {
+      user_id : { // 用户id[标识是哪位用户的购物车]
+        type     : 'integer',
+        positive: true,
+      },
+      product_id: {
+        type     : 'integer',
+        positive: true,
+      },
+      count: {
+          type: 'integer',
+          default: 1,
+          positive: true,
+      }
+    },
+  };
+
+  // api('MODEL/DELETE', {key: 'cart'});
+
+  api('MODEL/CREATE', model);
+
+  // api('MODEL/READ', model);
+
+</script>
