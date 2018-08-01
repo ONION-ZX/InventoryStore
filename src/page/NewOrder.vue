@@ -82,7 +82,7 @@ export default {
         submit(e) {
             e.preventDefault();
             this.current.user_id = session.his_id(); //提交订单的用户id
-            this.current.sum = this.total; //总价
+            this.current.total_price = this.total; //总价
             this.current.oid = generate_oid(this.current.id); //订单号
             this.current.product_id = this.product.id;
             api('order/create', this.current)

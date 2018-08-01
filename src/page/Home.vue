@@ -167,8 +167,11 @@ export default {
     }
     .card {
         margin-right: 5px;
-        background: rgba(0,0,0,.1);
+        background: rgba(0,0,0,.08);
         padding-bottom: 10px;
+    }
+    .card img:hover {
+        opacity: .8;
     }
     .info {
         padding: 5px;
@@ -200,5 +203,11 @@ export default {
     }
     .buy button {
         width: 30%;
+    }
+    .buy button a {
+        color: rgba(0,0,0,.6);
+    }
+    .buy button a:hover {
+        color: rgba(0,0,0,.9);
     }
 </style>

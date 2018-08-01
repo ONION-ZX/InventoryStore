@@ -52,6 +52,7 @@
           where : { oid },
         }).then(r => {
           let row = this.current = r.data;
+          console.log(row);
           let pay_by = row.pay_by;
 
           if (!row) {
@@ -64,7 +65,7 @@
             this.go_me_order();
           }
 
-          this.pay(row.id, pay_by, row.sum);
+          this.pay(row.id, pay_by, row.total_price);
 
           this.current = r.data || {};
         });
