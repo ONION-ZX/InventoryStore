@@ -23,13 +23,23 @@
                 <i class="fas fa-sign-in-alt"></i>
             </div>
             <div v-else>
-                <div @click="show_shortcut=!show_shortcut">
+                <div @mouseenter="show_shortcut=true" @click="show_shortcut=!show_shortcut">
                     <i class="far fa-user-circle"></i>
                     <span class="nav-item user">{{uinfo.username}}</span>
                 </div>
                 <div class="shortcut" v-if="show_shortcut">
-                    <span class="short" @click="logout">Log Out</span>
-                    <router-link to="/me" class="short">Me</router-link>
+                    <div class="short">
+                        <span>Cart</span>                   
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="short">
+                        <span><router-link to="/me">Profile</router-link></span>
+                        <i class="fas fa-smile-wink"></i>
+                    </div>
+                    <div class="short" @click="logout">
+                        <span>Log Out</span>
+                        <i class="fas fa-sign-out-alt"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -124,7 +134,6 @@ img {
 }
 
 .log a {
-    padding: 5px 8px;
     font-size: 14px;
     color: rgba(0,0,0,.7);
 }
@@ -145,7 +154,9 @@ img {
 }
 .short {
     padding: 5px;
-    display: block;
+}
+.short span {
+    padding-right: 5px;
 }
 
 .short:hover {
