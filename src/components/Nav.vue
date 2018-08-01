@@ -18,16 +18,20 @@
             </div>
         </div>
         <div class="col-lg-2 log right">
-            <div>
+            <div v-if="!uinfo">
                 <router-link to="/login">Sign In</router-link>
                 <i class="fas fa-sign-in-alt"></i>
             </div>
-            <!-- <div>
-                <span class="nav-item user">{{uinfo.username}}</span>
-                <span @click="logout">Log Out</span>
-            </div> -->
-            <!-- <i class="fal fa-sign-in-alt"></i> -->
-            <!-- <i class="fal fa-sign-in-alt"></i> -->
+            <div v-else>
+                <div @click="show_shortcut=!show_shortcut">
+                    <i class="far fa-user-circle"></i>
+                    <span class="nav-item user">{{uinfo.username}}</span>
+                </div>
+                <div class="shortcut" v-if="show_shortcut">
+                    <span class="short" @click="logout">Log Out</span>
+                    <router-link to="/me" class="short">Me</router-link>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -38,6 +42,7 @@ export default {
     data() {
         return {
             uinfo: session.uinfo(),
+            show_shortcut: false,
         }
     },
     methods: {
@@ -123,5 +128,29 @@ img {
     font-size: 14px;
     color: rgba(0,0,0,.7);
 }
+
+.user {
+    padding: 5px;
+}
+
+.shortcut {
+    margin-top: 5px;
+    padding: 5px;
+    width: 100px;
+    position: relative;
+    left: 51px;
+    background: rgba(0,0,0,.05);
+    color:rgba(0,0,0,.7);
+    font-size: 12px;
+}
+.short {
+    padding: 5px;
+    display: block;
+}
+
+.short:hover {
+    background:rgba(0,0,0,.3)
+}
+
 
 </style>

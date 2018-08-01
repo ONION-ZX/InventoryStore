@@ -21,7 +21,7 @@ export default {
   },
 
   uinfo () {
-    return JSON.parse(localStorage.getItem('uinfo')) || {};
+    return JSON.parse(localStorage.getItem('uinfo'));
   },
 
   login (row) {
