@@ -4,8 +4,8 @@
     <div style="max-width: 300px;" class="container">
       <div class="card">
         <div v-if="current.pay_by=='wechat'">
+          <button class="btn-primary" @click="verify">完成付款</button>
           <img :src="qrcode" alt="二维码">
-          <button class="btn-primary" @click="verify">支付完成</button>
         </div>
         <div v-if="current.pay_by=='alipay'">正在跳转...</div>
       </div>
@@ -97,4 +97,12 @@
 
   };
 </script>
-<style scoped></style>
+<style scoped>
+  .btn-primary {
+    padding: 10px;
+    position: relative;
+    left: 110px;
+    background: rgba(0,0,0,.8);
+    color: #fff;
+  }
+</style>

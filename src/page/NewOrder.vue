@@ -1,38 +1,37 @@
 <template>
     <div class="container">
         <Nav/>
-        <div class="col-lg-4"></div>
-        <div class="main col-lg-4">
-            <div>
-            <h1>下单</h1>
-            <div>{{product.title}}</div>
-            <div>单价:{{product.price}}</div>
-            <div>数量:{{current.count}}</div>
-            <div>总价:{{total}}</div>
-            <div>
-                <h3>支付方式</h3>
-                <div>
-                    <label>微信支付</label>
-                    <input type="radio" v-model="current.pay_by" value="wechat">
-                </div>
-                <div>
-                    <label>支付宝支付</label>
-                    <input type="radio" v-model="current.pay_by" value="alipay">
-                </div>
-            </div>
-            <button @click="submit">提交订单</button>
-            </div>
-            <!-- <div class="pay" v-if="show_pay">
-                <h1>打钱给我</h1>
-                <div v-if="current.pay_by=='wechat'">
-                    <img :src="payment_url">
-                </div>
-                <div v-else>
-                    <a :href="payment_url">{{payment_url}}</a>
-                </div>
-            </div> -->
+        <div class="col-lg-3">
         </div>
-        <div class="col-lg-4"></div>
+        <div class="main col-lg-9">
+        <div>        
+        <h3>{{product.title}}</h3>
+        <div><span class="col-lg-8">price </span><span class="col-lg-4 right"> {{product.price}}</span></div>
+        <div><span class="col-lg-8">count </span><span class="col-lg-4 right"> {{current.count}}</span></div>
+        <div><span class="col-lg-8">total </span><span class="col-lg-4 right"> {{total}}</span></div>
+        <div class="pay">
+            <h3>PAY BY</h3>
+            <div class="type">
+                <label>Wechat</label>
+                <input type="radio" v-model="current.pay_by" value="wechat">
+            </div>
+            <div class="type">
+                <label>Alipay</label>
+                <input type="radio" v-model="current.pay_by" value="alipay">
+            </div>
+        </div>
+        <button type="submit" @click="submit">提交订单</button>
+        </div>
+        <!-- <div class="pay" v-if="show_pay">
+            <h1>打钱给我</h1>
+            <div v-if="current.pay_by=='wechat'">
+                <img :src="payment_url">
+            </div>
+            <div v-else>
+                <a :href="payment_url">{{payment_url}}</a>
+            </div>
+        </div> -->
+    </div>
         <Footer/>
     </div>
 </template>
@@ -95,7 +94,29 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+    .main {
+        padding-top: 15px;
+    }
+    .main h2 {
+        margin: 0;
+    }
+    .right {
+        text-align: right;
+        font-size: 15px;
+    }
+    .pay {
+        clear: both;
+    }
+    .pay .type {
+        text-align: right;
+    }
+    .pay .type label {
+        margin-right: 5px;
+    }
+    button[type="submit"] {
+        float: right;
+        margin-top: 10px;
+    }
 </style>
 
