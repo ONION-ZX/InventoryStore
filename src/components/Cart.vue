@@ -21,7 +21,7 @@
                     <div class="price">$ {{it.$product.price}}</div>
                     <div class="subtotal">$ {{it.$product.price * it.count}}</div>
                     <div>
-                        <button class="remove contrast" @click="remove(it.$product.id)">Remove</button>
+                        <button class="remove contrast" @click="remove(it.id)">Remove</button>
                     </div>
                 </div>
             </div>

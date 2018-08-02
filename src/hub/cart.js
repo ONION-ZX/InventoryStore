@@ -28,7 +28,10 @@ function read () {
 
 function remove (id) {
   api('cart/delete', { id })
-    .then(r => read());
+    .then(() => {
+      read();
+      // alert('已删除');
+    });
 }
 
 function update (id, row) {
