@@ -37,6 +37,7 @@ export default {
 
 <style scoped>
     .cart {
+        z-index: 2;
         padding: 10px;
         width: 350px;
         height: 500px;

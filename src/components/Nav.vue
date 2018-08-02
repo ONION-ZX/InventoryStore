@@ -141,6 +141,7 @@ img {
 .log a {
     font-size: 14px;
     color: rgba(0,0,0,.7);
+    padding-right: 5px;
 }
 
 .user {
