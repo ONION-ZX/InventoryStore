@@ -29,8 +29,7 @@
                 </div>
                 <div class="cart" @click="show_cart=!show_cart">
                     <i class="fas fa-cart-arrow-down"></i>
-                    <span class="count">5</span>
-                    <!-- <i class="fas fa-shopping-bag"></i> -->
+                    <span class="count">{{counts}}</span>
                 </div>
                 <Cart :show_cart="show_cart" v-if="show_cart"/>
                 <div class="shortcut" v-if="show_shortcut">
@@ -49,18 +48,24 @@
 </template>
 <script>
 import Cart from './Cart';
+import { count } from '../hub/cart';
 import session from '../lib/session';
 
 export default {
     components: {Cart},
+    mouted() {
+        count();
+    },
     data() {
         return {
             show_cart: false,
             uinfo: session.uinfo(),
             show_shortcut: false,
+            counts: count(),
         }
     },
     methods: {
+      count,
       logout() {
         session.logout();
       },

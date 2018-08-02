@@ -9,7 +9,9 @@
                 </div>
                 <div class="col-lg-6">
                     <div class="detail">
-                        <div class="title">{{it.$product.title}}</div>
+                        <div class="title">
+                            <router-link :to="'/detail/'+it.$product.id">{{it.$product.title}}</router-link>
+                        </div>
                         <div class="count">
                             <button class="col-lg-3" @click="it.count > 1 &&it.count--">-</button>
                             <input class="col-lg-3" type="number" v-model="it.count">

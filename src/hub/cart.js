@@ -27,6 +27,8 @@ function read () {
 }
 
 function remove (id) {
+  if(!confirm('确认要删除吗?'))
+    return;
   api('cart/delete', { id })
     .then(() => {
       read();
@@ -56,9 +58,16 @@ function product_exist (product_id) {
   return !!find_by_product_id(product_id);
 }
 
+function each (fn) {
+  for (let id in hub.cart) {
+    let it = hub.cart[ id ];
+    fn(it, id);
+  }
+}
+
 
 function init () {
   read();
 }
 
-export {hub, all, add, read, remove, update, count, find_by_product_id, product_exist}
+export {hub, all, add, read, remove, update, count, find_by_product_id, product_exist, each}

@@ -16,28 +16,6 @@
                     <div class="product_flickity">
                         <img :src="get_thumbnail(detail)">
                     </div>
-                    <!-- <div class="product_gallery">
-                        <div class="col-lg-3">
-                            <div class="pad">
-                                <img src="../assets/product/product8.jpg">
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="pad">
-                                <img src="../assets/product/product5.jpg">
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="pad">
-                                <img src="../assets/product/product6.jpg">
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="pad">
-                                <img src="../assets/product/product7.jpg">
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="col col-lg-6">
                     <h1 class="title">{{detail.title}}</h1>
@@ -100,7 +78,7 @@ import api from '../lib/api';
 import ProductList from '../mixins/ProductList';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
-import {add, all} from '../hub/cart';
+import {add, update, product_exist, find_by_product_id} from '../hub/cart';
 export default {
     components: {Nav, Footer},
     mixins: [ProductList ],
@@ -115,8 +93,17 @@ export default {
         this.find(id);
     },
     methods: {
-        add_to_cart: add,
-        all,
+        add,
+        update,
+        product_exist,
+        add_to_cart(id, count) {
+            if(product_exist(id)) {
+                let product = find_by_product_id(id);
+                product.count += count;
+            } else {
+                add(id, count);
+            }
+        },
         find(id) {
             api('product/find', {id})
                 .then(r => {
