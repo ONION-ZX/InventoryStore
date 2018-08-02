@@ -22,6 +22,13 @@
                     <div class="subtotal">$ 1250</div>
                 </div>
             </div>
+            <div class="pay">
+                <div class="compute">
+                    <div class="col-lg-9 left">Subtotal:</div>
+                    <div class="col-lg-3 right"> $ 12580</div>
+                </div>
+                <button class="col-lg-12 contrast">GO TO CART</button>
+            </div>
         </div>
     </div>
 </template>
@@ -54,6 +61,8 @@ export default {
     }
     .product {
         padding-top: 10px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(0,0,0,.1);
     }
     .price {
         text-align: center;
@@ -69,8 +78,13 @@ export default {
         border-left: 0;
         border-right: 0;
     }
-    .subtotal {
-        margin-top: 43px;
+    .pay {
+        margin-top: 10px;
+        padding: 5px;
+    }
+    .compute > * {
+        font-size: 13px;
+        font-weight: bold;
     }
 </style>
 

@@ -152,7 +152,7 @@ img {
     padding: 5px;
     width: 100px;
     position: absolute;
-    left: 84%;
+    left: 80%;
     background: rgba(0,0,0,.09);
     color:rgba(0,0,0,.7);
     font-size: 12px;
@@ -160,6 +160,8 @@ img {
 }
 .short {
     padding: 5px;
+    font-size: 14px;
+
 }
 .short span {
     padding-right: 5px;
