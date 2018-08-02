@@ -4,7 +4,7 @@
     <div style="max-width: 300px;" class="container">
       <div class="card">
         <div v-if="current.pay_by=='wechat'">
-          <button class="btn-primary" @click="verify">完成付款</button>
+          <button class="btn-primary" @click="verify">付款完成</button>
           <img :src="qrcode" alt="二维码">
         </div>
         <div v-if="current.pay_by=='alipay'">正在跳转...</div>

@@ -32,7 +32,7 @@
                     <div class="col-lg-9 left">Subtotal:</div>
                     <div class="col-lg-3 right"> $ {{sum}}</div>
                 </div>
-                <button class="col-lg-12 contrast">GO TO CART</button>
+                <router-link to="/new-order" class="col-lg-12 contrast">PAY</router-link>
             </div>
         </div>
     </div>
@@ -111,6 +111,12 @@ export default {
         font-size: 13px;
         font-weight: bold;
     }
+    .contrast {
+        padding: 5px;
+    }
+    .contrast:hover {
+        border: 1px solid rgba(0,0,0,.5);
+    }
     .remove {
         font-size: 12px;
         margin-top: 14px;
@@ -118,6 +124,10 @@ export default {
     .subtotal {
         margin-top: 40px;
         font-size: 14px;
+    }
+    .cart-list.empty {
+        padding-top: 20px;
+        height: 50px;
     }
 </style>
 

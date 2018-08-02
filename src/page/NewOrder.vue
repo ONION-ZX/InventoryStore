@@ -2,41 +2,36 @@
     <div class="container">
         <Nav/>
         <div class="col-lg-3">
+            <div class="thumbnail">
+                <img :src="get_thumbnail(product)">
+            </div>
         </div>
         <div class="main col-lg-9">
-        <div>        
-        <h3>{{product.title}}</h3>
-        <div><span class="col-lg-8">price </span><span class="col-lg-4 right"> {{product.price}}</span></div>
-        <div><span class="col-lg-8">count </span><span class="col-lg-4 right"> {{current.count}}</span></div>
-        <div><span class="col-lg-8">total </span><span class="col-lg-4 right"> {{total}}</span></div>
-        <div class="pay">
-            <h3>PAY BY</h3>
-            <div class="type">
-                <label>Wechat</label>
-                <input type="radio" v-model="current.pay_by" value="wechat">
+            <div>        
+                <h3>{{product.title}}</h3>
+                <div><span class="col-lg-8">price </span><span class="col-lg-4 right"> {{product.price}}</span></div>
+                <div><span class="col-lg-8">count </span><span class="col-lg-4 right"> {{current.count}}</span></div>
+                <div><span class="col-lg-8">total </span><span class="col-lg-4 right"> {{total}}</span></div>
+                <div class="pay">
+                    <h3>PAY BY</h3>
+                    <div class="type">
+                        <label>Wechat</label>
+                        <input type="radio" v-model="current.pay_by" value="wechat">
+                    </div>
+                    <div class="type">
+                        <label>Alipay</label>
+                        <input type="radio" v-model="current.pay_by" value="alipay">
+                    </div>
+                </div>
+                <button type="submit" @click="submit">提交订单</button>
             </div>
-            <div class="type">
-                <label>Alipay</label>
-                <input type="radio" v-model="current.pay_by" value="alipay">
-            </div>
-        </div>
-        <button type="submit" @click="submit">提交订单</button>
-        </div>
-        <!-- <div class="pay" v-if="show_pay">
-            <h1>打钱给我</h1>
-            <div v-if="current.pay_by=='wechat'">
-                <img :src="payment_url">
-            </div>
-            <div v-else>
-                <a :href="payment_url">{{payment_url}}</a>
-            </div>
-        </div> -->
     </div>
         <Footer/>
     </div>
 </template>
 
 <script>
+import ProductList from '../mixins/ProductList';
 import api from '../lib/api';
 import session from '../lib/session';
 import Nav from '../components/Nav';
@@ -90,7 +85,8 @@ export default {
                     this.$router.push('/pay/' + r.data.oid);
                 });
         },
-    }
+    },
+    mixins: [ProductList],
 }
 </script>
 
@@ -117,6 +113,12 @@ export default {
     button[type="submit"] {
         float: right;
         margin-top: 10px;
+    }
+    .thumbnail {
+        padding: 8px;
+    }
+    .thumbnail img {
+        max-width: 80%;
     }
 </style>
 
