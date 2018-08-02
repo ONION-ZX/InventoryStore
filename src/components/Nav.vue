@@ -23,15 +23,17 @@
                 <i class="fas fa-sign-in-alt"></i>
             </div>
             <div v-else>
-                <div @mouseenter="show_shortcut=true" @click="show_shortcut=!show_shortcut">
+                <div class="icon" @click="show_shortcut=!show_shortcut">
                     <i class="far fa-user-circle"></i>
-                    <span class="nav-item user">{{uinfo.username}}</span>
+                    <!-- <span class="nav-item user">{{uinfo.username}}</span> -->
                 </div>
+                <div class="cart" @click="show_cart=!show_cart">
+                    <i class="fas fa-cart-arrow-down"></i>
+                    <span class="count">5</span>
+                    <!-- <i class="fas fa-shopping-bag"></i> -->
+                </div>
+                <Cart :show_cart="show_cart" v-if="show_cart"/>
                 <div class="shortcut" v-if="show_shortcut">
-                    <div class="short">
-                        <span>Cart</span>                   
-                        <i class="fas fa-shopping-bag"></i>
-                    </div>
                     <div class="short">
                         <span><router-link to="/me">Profile</router-link></span>
                         <i class="fas fa-smile-wink"></i>
@@ -46,11 +48,14 @@
     </div>
 </template>
 <script>
+import Cart from './Cart';
 import session from '../lib/session';
 
 export default {
+    components: {Cart},
     data() {
         return {
+            show_cart: false,
             uinfo: session.uinfo(),
             show_shortcut: false,
         }
@@ -143,14 +148,14 @@ img {
 }
 
 .shortcut {
-    margin-top: 5px;
     padding: 5px;
     width: 100px;
-    position: relative;
-    left: 51px;
-    background: rgba(0,0,0,.05);
+    position: absolute;
+    left: 84%;
+    background: rgba(0,0,0,.09);
     color:rgba(0,0,0,.7);
     font-size: 12px;
+    top: 24px;
 }
 .short {
     padding: 5px;
@@ -163,5 +168,24 @@ img {
     background:rgba(0,0,0,.3)
 }
 
+.icon {
+    position:relative;
+    padding-left: 126px;
+    padding-right: 20px;
+
+}
+
+.icon, .cart {
+    display: inline-block;
+    font-size: 1.2rem;
+}
+
+.cart {
+    text-align: right;
+}
+.count {
+    font-size: 12px;
+    padding-left: 5px;
+}
 
 </style>
