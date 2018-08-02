@@ -52,7 +52,7 @@
                         <input type="text" v-model.number="count">
                         <button @click="add">+</button>
                     </div>
-                    <button class="cart" type="button">ADD TO CART</button>
+                    <button class="cart" type="button" @click="add_to_cart(detail.id, count)">ADD TO CART</button>
                     <router-link :to="to_new_order()" class="purchase" >PURCHASE NOW</router-link>
                     <div class="content">
                         <div class="row cat">
@@ -100,13 +100,14 @@ import api from '../lib/api';
 import ProductList from '../mixins/ProductList';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
+import {add, all} from '../hub/cart';
 export default {
     components: {Nav, Footer},
     mixins: [ProductList ],
     data() {
         return {
             detail: {},
-            count: 0,
+            count: 1,
         }
     },
     mounted() {
@@ -114,6 +115,8 @@ export default {
         this.find(id);
     },
     methods: {
+        add_to_cart: add,
+        all,
         find(id) {
             api('product/find', {id})
                 .then(r => {
@@ -131,7 +134,7 @@ export default {
                     count: this.count,
                 }
             }
-        },
+        },        
         add() {
             this.count ++;
         },
