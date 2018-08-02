@@ -65,6 +65,8 @@ export default {
 
 <style scoped>
     .cart-list {
+        height: 500px;
+        overflow: scroll;
         z-index: 2;
         padding: 10px;
         width: 400px;
