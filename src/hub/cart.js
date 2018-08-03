@@ -38,10 +38,10 @@ function remove (id) {
     });
 }
 
-function update (id, row) {
-  row.id = id;
+function update (user_id, product_id, row) {
+  row.id = product_id;
   api('cart/update', row)
-    .then(r => read());
+    .then(r => read(user_id));
 }
 
 function count () {

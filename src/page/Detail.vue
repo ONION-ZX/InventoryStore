@@ -30,7 +30,7 @@
                         <input type="text" v-model.number="count">
                         <button @click="add">+</button>
                     </div>
-                    <button class="cart" type="button" @click="add_to_cart(detail.id, count)">ADD TO CART</button>
+                    <button class="cart" type="button" @click="add_to_cart(user_id,detail.id, count)">ADD TO CART</button>
                     <router-link :to="to_new_order()" class="purchase" >PURCHASE NOW</router-link>
                     <div class="content">
                         <div class="row cat">
@@ -75,6 +75,7 @@
 
 <script>
 import api from '../lib/api';
+import session from '../lib/session';
 import ProductList from '../mixins/ProductList';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
@@ -86,6 +87,7 @@ export default {
         return {
             detail: {},
             count: 1,
+            user_id: session.uinfo().id,
         }
     },
     mounted() {
@@ -100,8 +102,6 @@ export default {
             if(product_exist(product_id)) {
                 let product = find_by_product_id(product_id);
                 product.count += count;
-                update(product_id, product);
-                
             } else {
                 add(user_id, product_id, count);
             }

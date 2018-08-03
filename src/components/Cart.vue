@@ -32,7 +32,7 @@
                     <div class="col-lg-9 left">Subtotal:</div>
                     <div class="col-lg-3 right"> $ {{sum}}</div>
                 </div>
-                <!-- <router-link :to="to_new_order()" class="col-lg-12 contrast">PAY</router-link> -->
+                <router-link to="/new-order" class="col-lg-12 contrast">PAY</router-link>
             </div>
         </div>
         <div class="cart-hub empty" v-else>
