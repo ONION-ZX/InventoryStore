@@ -84,7 +84,7 @@
 <script>
   import Nav from '../components/Nav';
   import Footer from '../components/Footer';
-  import validator from '../directive/validator.js';
+  import validator from '../directive/validator';
   import api from '../lib/api';
 
   export default {

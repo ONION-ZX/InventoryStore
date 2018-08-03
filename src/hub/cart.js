@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import api from '../lib/api';
+import session from '../lib/session';
+
 
 init();
 
@@ -11,16 +13,16 @@ function all () {
   return hub;
 }
 
-function add (product_id, count) {
-  api('cart/create', { product_id, count })
+function add (user_id, product_id, count) {
+  api('cart/create', { user_id,product_id, count })
     .then(() => {
-        read();
+        read(user_id);
         alert('已添加!');
     });
 }
 
-function read () {
-  api('cart/read', { key_by : 'id', with : 'has_one:product', limit : 50 })
+function read (id) {
+  api('cart/read', { key_by : 'id', with : 'has_one:product', limit : 50, where:{id}})
     .then(r => {
       Vue.set(hub, 'cart', r.data);
     });

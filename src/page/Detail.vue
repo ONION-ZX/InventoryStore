@@ -96,12 +96,14 @@ export default {
         add,
         update,
         product_exist,
-        add_to_cart(id, count) {
-            if(product_exist(id)) {
-                let product = find_by_product_id(id);
+        add_to_cart(user_id, product_id, count) {
+            if(product_exist(product_id)) {
+                let product = find_by_product_id(product_id);
                 product.count += count;
+                update(product_id, product);
+                
             } else {
-                add(id, count);
+                add(user_id, product_id, count);
             }
         },
         find(id) {

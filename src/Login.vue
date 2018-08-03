@@ -46,6 +46,8 @@
 
 <script>
   import '../css/single-form.css';
+  import validator from '../directive/validator';
+
 
   import Nav    from '../component/Nav';
   import Footer from '../component/Footer';
@@ -54,16 +56,8 @@
   import session from '../lib/session';
 
 
-  // import validator from '../directive/validator';
-  // import red       from '../directive/red';
-
-  // api('user/update', {
-  //   id       : 25,
-  //   username : 'whh',
-  // });
-
   export default {
-    // directives : { validator },
+    directives : { validator },
     data () {
       return {
         current      : {},

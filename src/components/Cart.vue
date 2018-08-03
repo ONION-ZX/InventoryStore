@@ -1,7 +1,7 @@
 <template>
     <div v-if="show_cart" class="container">
-        <div class="cart-list">
-            <div class="product" :key="i" v-for="(it, i) in list.cart">
+        <div class="cart-hub" v-if="hub.cart">
+            <div class="product" :key="i" v-for="(it, i) in hub.cart">
                 <div class="col-lg-4">
                     <div class="thumbnail">
                         <img :src="get_thumbnail(it.$product)">
@@ -32,8 +32,11 @@
                     <div class="col-lg-9 left">Subtotal:</div>
                     <div class="col-lg-3 right"> $ {{sum}}</div>
                 </div>
-                <router-link to="/new-order" class="col-lg-12 contrast">PAY</router-link>
+                <!-- <router-link :to="to_new_order()" class="col-lg-12 contrast">PAY</router-link> -->
             </div>
+        </div>
+        <div class="cart-hub empty" v-else>
+            Your Cart is Empty
         </div>
     </div>
 </template>
@@ -44,18 +47,26 @@ export default {
     props: ['show_cart'],
     data() {
         return {
-            list: all(),
+            hub:all(),
         };
     },
     methods: {
         count,
         remove,
+        // to_new_order() {
+        //     return {
+        //         path: '/new-order',
+        //         query: {
+        //             from_cart: ,
+        //         }
+        //     }
+        // },
     },
     computed: {
         sum() {
             let sum = 0;
-            for(let i in this.list.cart) {
-                let cart = this.list.cart[i];
+            for(let i in this.hub.cart) {
+                let cart = this.hub.cart[i];
                 sum += cart.$product.price * cart.count;
             }
             return sum;
@@ -66,7 +77,7 @@ export default {
 </script>
 
 <style scoped>
-    .cart-list {
+    .cart-hub {
         height: 500px;
         overflow: scroll;
         z-index: 2;
@@ -125,9 +136,11 @@ export default {
         margin-top: 40px;
         font-size: 14px;
     }
-    .cart-list.empty {
-        padding-top: 20px;
-        height: 50px;
+    .cart-hub.empty {
+        padding-top: 50px;
+        /* padding: 30px; */
+        height: 60px;
+        top: 12%;
     }
 </style>
 
