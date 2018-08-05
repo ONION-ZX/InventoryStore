@@ -9,9 +9,9 @@
         <div class="main col-lg-9">
             <div>        
                 <h3>{{product.title}}</h3>
-                <div><span class="col-lg-8">price </span><span class="col-lg-4 right"> {{product.price}}</span></div>
-                <div><span class="col-lg-8">count </span><span class="col-lg-4 right"> {{current.count}}</span></div>
-                <div><span class="col-lg-8">total </span><span class="col-lg-4 right"> {{total}}</span></div>
+                <div><span class="col-lg-8">price: </span><span class="col-lg-4 right"> {{product.price}}</span></div>
+                <div><span class="col-lg-8">count: </span><span class="col-lg-4 right"> {{current.count}}</span></div>
+                <div><span class="col-lg-8">total: </span><span class="col-lg-4 right"> {{total}}</span></div>
                 <div class="pay">
                     <h3>PAY BY</h3>
                     <div class="type">
@@ -42,7 +42,7 @@ export default {
     components: {Nav, Footer},
     mounted() {
         this.current = Object.assign({}, this.current, this.$route.query);
-
+        console.log(this.current);
         this.find(this.current.id);
     },
     data() {
@@ -50,6 +50,7 @@ export default {
             current: {
                 pay_by: 'wechat',
             },
+            from_cart: false,
             product: {},
             payment_url: null,
             submitted: false,

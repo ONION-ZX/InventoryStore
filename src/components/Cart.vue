@@ -22,6 +22,7 @@
                 <div class="col-lg-2">
                     <div class="price">$ {{it.$product.price}}</div>
                     <div class="subtotal">$ {{it.$product.price * it.count}}</div>
+                    <!-- {{hub.cart[Object.keys(hub.cart)[0]].product_id}} -->
                     <div>
                         <button class="remove contrast" @click="remove(it.id)">Remove</button>
                     </div>
@@ -32,7 +33,7 @@
                     <div class="col-lg-9 left">Subtotal:</div>
                     <div class="col-lg-3 right"> $ {{sum}}</div>
                 </div>
-                <router-link to="/new-order" class="col-lg-12 contrast">PAY</router-link>
+                <router-link :to="to_new_order()" class="col-lg-12 contrast">GO TO CART</router-link>
             </div>
         </div>
         <div class="cart-hub empty" v-else>
@@ -42,25 +43,36 @@
 </template>
 <script>
 import ProductList from '../mixins/ProductList';
-import { hub, all, remove, count } from '../hub/cart';
+import { each, hub, all, remove, count } from '../hub/cart';
 export default {
+    mounted(){
+        this.get_product();
+    },
     props: ['show_cart'],
     data() {
         return {
             hub:all(),
+            product_id_list: [],
+            cart_info:Object.values(hub.cart),
         };
     },
     methods: {
         count,
         remove,
-        // to_new_order() {
-        //     return {
-        //         path: '/new-order',
-        //         query: {
-        //             from_cart: ,
-        //         }
-        //     }
-        // },
+        get_product() {
+            this.cart_info.forEach(row => {
+                let id = row.id;
+                this.product_id_list.push(id);
+            });
+        },
+        to_new_order() {
+            return {
+                path: '/new-cartorder',
+                query: {
+                    id: this.product_id_list,
+                }
+            }
+        },
     },
     computed: {
         sum() {
@@ -141,6 +153,9 @@ export default {
         /* padding: 30px; */
         height: 60px;
         top: 12%;
+    }
+    .detail .title a {
+        color: rgba(0,0,0,.8);
     }
 </style>
 

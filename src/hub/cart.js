@@ -34,7 +34,6 @@ function remove (id) {
   api('cart/delete', { id })
     .then(() => {
       read();
-      alert('已删除');
     });
 }
 

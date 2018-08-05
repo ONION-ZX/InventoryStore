@@ -16,6 +16,7 @@ import MeOrder from './page/MeOrder';
 
 import Search from './page/Search';
 import NewOrder from './page/NewOrder';
+import NewCartOrder from './page/NewCartOrder';
 import Pay from './page/Pay';
 import Login from './page/Login';
 import Signup from './page/Signup';
@@ -49,6 +50,7 @@ const router = new Router({
     { path: '/login', component: Login}, 
     { path: '/signup', component: Signup}, 
     { path: '/new-order', component: NewOrder},  
+    { path: '/new-cartorder', component: NewCartOrder},  
     { path: '/pay/:oid', component: Pay},    
     { path: '/me', 
       component: Me,
