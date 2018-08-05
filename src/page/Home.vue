@@ -12,12 +12,6 @@
 
             </swiper>
         </div>
-        <!-- <div class="slider">
-            <div class="img" :key="i" v-for="(row,i) in swiper">
-               <img :src="row.name"> 
-            <span class="desc">{{row.desc}}</span>
-            </div>
-        </div> -->
         <div class="main">
             <div class="cat-item">
                 <div class="row">

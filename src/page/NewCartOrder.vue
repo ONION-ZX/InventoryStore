@@ -97,10 +97,11 @@ export default {
             this.current.user_id = session.his_id(); //提交订单的用户id
             this.current.total_price = this.total; //总价
             this.current.oid = generate_oid(this.current.id); //订单号
-            this.current.cart_id = this.cart_id_list;
+            this.current.product_info = this.product_list;
             api('order/create',this.current)
                 .then(r => {
-                    this.current.orderid = r.data.id;
+                    this.current.id = r.data.id;
+                    console.log(r)
                     this.$router.push('/pay/' + r.data.oid);
                 });
         },

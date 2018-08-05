@@ -30,7 +30,7 @@
     methods : {
       pay (id, pay_by, fee) {
         if (fee > .2)
-          fee = '0.0' + fee.toString().slice(0, 2);
+          fee = '0.0'+ fee.toString().slice(0,2);
 
         return api('order/payment/url', {
           id         : id,
@@ -52,7 +52,6 @@
           where : { oid },
         }).then(r => {
           let row = this.current = r.data;
-          console.log(row);
           let pay_by = row.pay_by;
 
           if (!row) {

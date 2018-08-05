@@ -12,10 +12,11 @@
             </div>
         </div>
         <div class="col-lg-2">
-            <div class="search">
+            <SearchBar/>
+            <!-- <div class="search">
                 <input type="search" placeholder="search" autofocus>
                 <i class="fas fa-search"></i>
-            </div>
+            </div> -->
         </div>
         <div class="col-lg-2 log right">
             <div v-if="!uinfo">
@@ -25,7 +26,6 @@
             <div v-else>
                 <div class="icon" @click="show_shortcut=!show_shortcut">
                     <i class="far fa-user-circle"></i>
-                    <!-- <span class="nav-item user">{{uinfo.username}}</span> -->
                 </div>
                 <div class="cart" @click="show_cart=!show_cart">
                     <i class="fas fa-cart-arrow-down"></i>
@@ -47,12 +47,13 @@
     </div>
 </template>
 <script>
+import SearchBar from './SearchBar';
 import Cart from './Cart';
 import { count } from '../hub/cart';
 import session from '../lib/session';
 
 export default {
-    components: {Cart},
+    components: {Cart, SearchBar},
     mouted() {
         count();
     },
@@ -125,18 +126,6 @@ img {
 .nav .nav-item:hover {
     color: rgba(0,0,0,.9);
     font-weight: bold;
-}
-
-.search {
-    display: inline-block;
-    font-size: 18px;
-    border-bottom: 1px solid rgba(0,0,0,.5);
-}
-
-.search input {
-    outline: none;
-    padding: 5px;
-    border: 0;
 }
 
 .log {

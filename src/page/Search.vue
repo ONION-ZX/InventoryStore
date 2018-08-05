@@ -36,7 +36,7 @@
                         <div :key="index" v-for="(row, index) in result" class="col-lg-3">
                             <div class="card">
                                 <div class="thumbnail">
-                                    <img :src="get_main_cover_url(row)">
+                                    <img :src="get_thumbnail(row)">
                                 </div>
                                 <div class="prev">
                                     <div class="title">{{row.title}}</div>
@@ -44,132 +44,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="col-lg-3">
-                            <div class="card">
-                                <div class="thumbnail">
-                                    <img src="../assets/search/search1.jpg">
-                                </div>
-                                <div class="prev">
-                                    <div class="title">Denim ORTEGA Patchwork Tote Bag - IDG</div>
-                                    <div class="price">$ 372.00</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="card">
-                                <div class="thumbnail">
-                                    <img src="../assets/search/search3.jpg">
-                                </div>
-                                <div class="prev">
-                                    <div class="title">Denim ORTEGA Patchwork Tote Bag - IDG</div>
-                                    <div class="price">$ 372.00</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="card">
-                                <div class="thumbnail">
-                                    <img src="../assets/search/search4.jpg">
-                                </div>
-                                <div class="prev">
-                                    <div class="title">Denim ORTEGA Patchwork Tote Bag - IDG</div>
-                                    <div class="price">$ 372.00</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <div class="card">
-                                <div class="thumbnail">
-                                    <img src="../assets/search/search5.jpg">
-                                </div>
-                                <div class="prev">
-                                    <div class="title">Denim ORTEGA Patchwork Tote Bag - IDG</div>
-                                    <div class="price">$ 372.00</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="card">
-                                <div class="thumbnail">
-                                    <img src="../assets/search/search3.jpg">
-                                </div>
-                                <div class="prev">
-                                    <div class="title">Denim ORTEGA Patchwork Tote Bag - IDG</div>
-                                    <div class="price">$ 372.00</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="card">
-                                <div class="thumbnail">
-                                    <img src="../assets/search/search5.jpg">
-                                </div>
-                                <div class="prev">
-                                    <div class="title">Denim ORTEGA Patchwork Tote Bag - IDG</div>
-                                    <div class="price">$ 372.00</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="card">
-                                <div class="thumbnail">
-                                    <img src="../assets/search/search2.jpg">
-                                </div>
-                                <div class="prev">
-                                    <div class="title">Denim ORTEGA Patchwork Tote Bag - IDG</div>
-                                    <div class="price">$ 372.00</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <div class="card">
-                                <div class="thumbnail">
-                                    <img src="../assets/search/search4.jpg">
-                                </div>
-                                <div class="prev">
-                                    <div class="title">Denim ORTEGA Patchwork Tote Bag - IDG</div>
-                                    <div class="price">$ 372.00</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="card">
-                                <div class="thumbnail">
-                                    <img src="../assets/search/search3.jpg">
-                                </div>
-                                <div class="prev">
-                                    <div class="title">Denim ORTEGA Patchwork Tote Bag - IDG</div>
-                                    <div class="price">$ 372.00</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="card">
-                                <div class="thumbnail">
-                                    <img src="../assets/search/search2.jpg">
-                                </div>
-                                <div class="prev">
-                                    <div class="title">Denim ORTEGA Patchwork Tote Bag - IDG</div>
-                                    <div class="price">$ 372.00</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="card">
-                                <div class="thumbnail">
-                                    <img src="../assets/search/search5.jpg">
-                                </div>
-                                <div class="prev">
-                                    <div class="title">Denim ORTEGA Patchwork Tote Bag - IDG</div>
-                                    <div class="price">$ 372.00</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                     </div>
                 </div>
             </div>
@@ -179,19 +53,54 @@
 </template>
 
 <script>
+import api from '../lib/api';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import ProductList from '../mixins/ProductList';
 export default {
     components: {Nav, Footer},
+    mounted() {
+        this.prepare_search_param();
+        this.search();
+    },
     data() {
         return {
             result: [],
             list: {},
+            search_param: {},
         }
     },
     methods: {
+        prepare_search_param() {
+            let query = this.$route.query;
+            this.search_param = query;
+        },
+        search() {
+            let param = this.search_param
+              , brand_query
+              , fabric_query
+              , color_query;
+            param.brand_id && (brand_query = `and "brand_id" = ${param.brand_id}`);
+            param.fabric_id && (fabric_query = `and "fabric_id" = ${param.fabric_id}`);
+            param.color_id && (color_query = `and "color_id" = ${param.color_id}`);
+            // let query = `where("title" contains ${param.keyword})`
+            // let query = `where("title" contains "${param.keyword || ''}" ${brand_query} ${fabric_query} ${color_query})`;
 
+            api('product/read', {query:{brand_query} })
+                .then(r => {
+                    this.result = r.data;
+                    console.log(this.result);
+                })
+        },
+    },
+    watch: {
+      '$route.query': {
+        deep: true,
+        handler() {
+          this.prepare_search_param();
+          this.search();
+        }
+      }
     },
     mixins: [ProductList],
 }
