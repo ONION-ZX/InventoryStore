@@ -19,6 +19,12 @@
                             <span @click="set_condition('brand_id', brand.id);search()" v-for="(brand,i) in brand_list" :key="i">{{brand.name}}</span>
                         </div>
                     </div>
+                    <div class="cat-item">
+                        <h4>FABRIC</h4>
+                        <div class="item-group">
+                            <span @click="set_condition('fabric_id', fabric.id);search()" v-for="(fabric,i) in fabric_list" :key="i">{{fabric.name}}</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="col col-lg-9">
                     <div class="empty" v-if="!result">
@@ -55,11 +61,13 @@ export default {
     mounted() {
         this.search();
         this.list_brand();
+        this.list_fabric();
     },
     data() {
         return {
             search_param: {},
             brand_list: [],
+            fabric_list: [],
             result: [],
             list: {},
             keyword: '',
@@ -67,16 +75,21 @@ export default {
     },
     methods: {
         search (keyword) {
-            let brand_id = this.$route.query.brand_id;
-            console.log(brand_id);
-            let brand_query;
+            let brand_id = this.$route.query.brand_id || '';
+            let fabric_id = this.$route.query.fabric_id || '';
+            let brand_query = brand_id ? `and "brand_id" = ${brand_id}`: '';
+            let fabric_query = fabric_id ? `and "fabric_id" = ${fabric_id}`: '';
 
-            api('product/read', {where: {and: {brand_id}}})
-            .then(r => this.result = r.data);
+            let query = `where("title" contains "${keyword || ''}" ${brand_query} ${fabric_query})`
+            api('product/read', { query}).then(r => this.result = r.data)
         },
         list_brand() {
             api('brand/read')
                 .then(r => this.brand_list = r.data);
+        },
+        list_fabric() {
+            api('fabric/read')
+                .then(r => this.fabric_list = r.data);
         },
         set_condition(type, value) {
             let condition = {};
