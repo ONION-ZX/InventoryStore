@@ -29,8 +29,11 @@
 
     methods : {
       pay (id, pay_by, fee) {
+        // if(fee)
+        //   fee = 0.01;
         if (fee > .2)
-          fee = '0.0'+ fee.toString().slice(0,2);
+          fee = 0.2;
+          // fee = '0.'+ fee.toString().slice(0,2);
 
         return api('order/payment/url', {
           id         : id,

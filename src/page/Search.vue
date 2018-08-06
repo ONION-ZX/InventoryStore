@@ -4,9 +4,10 @@
         <div class="content">
             <h3>Search</h3>
             <div class="result">Showing 36 results for "deniem"</div>
+            <!-- <SearchBar/> -->
             <div class="search">
                 <div class="con">
-                    <input class="col-lg-12" type="search" placeholder="search..." autofocus>
+                    <input v-model="keyword" class="col-lg-12" type="search" placeholder="search..." autofocus>
                 </div>
             </div>
             <div class="row">
@@ -54,11 +55,12 @@
 
 <script>
 import api from '../lib/api';
+import SearchBar from '../components/SearchBar';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import ProductList from '../mixins/ProductList';
 export default {
-    components: {Nav, Footer},
+    components: {Nav, Footer, SearchBar},
     mounted() {
         this.prepare_search_param();
         this.search();
@@ -68,6 +70,7 @@ export default {
             result: [],
             list: {},
             search_param: {},
+            keyword: '',
         }
     },
     methods: {
