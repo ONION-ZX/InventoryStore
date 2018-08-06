@@ -16,7 +16,7 @@
                     <div class="cat-item">
                         <h4>BRAND</h4>
                         <div class="item-group">
-                            <span @click="set_brand('brand_id', brand.id);search()" v-for="(brand,i) in brand_list" :key="i">{{brand.name}}</span>
+                            <span @click="set_condition('brand_id', brand.id);search()" v-for="(brand,i) in brand_list" :key="i">{{brand.name}}</span>
                         </div>
                     </div>
                 </div>
@@ -70,10 +70,6 @@ export default {
             let brand_id = this.$route.query.brand_id;
             console.log(brand_id);
             let brand_query;
-        // p.brand_id && (brand_query = `and "brand_id" = ${p.brand_id}`);
-
-            // param.brand_id && (brand_query = `and "brand_id" = ${param.brand_id}`);
-            // let query = `where("title" contains "${keyword || ''}" ${brand_query})`;
 
             api('product/read', {where: {and: {brand_id}}})
             .then(r => this.result = r.data);
@@ -82,7 +78,7 @@ export default {
             api('brand/read')
                 .then(r => this.brand_list = r.data);
         },
-        set_brand(type, value) {
+        set_condition(type, value) {
             let condition = {};
             condition[type] = value;
 
