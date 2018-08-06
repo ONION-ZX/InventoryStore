@@ -16,7 +16,7 @@
                     <div class="cat-item">
                         <h4>BRAND</h4>
                         <div class="item-group">
-                            <span v-for="(brand,i) in brand_list" :key="i">{{brand.name}}</span>
+                            <span @click="set_brand('brand_id', brand.id);search()" v-for="(brand,i) in brand_list" :key="i">{{brand.name}}</span>
                         </div>
                     </div>
                 </div>
@@ -58,6 +58,7 @@ export default {
     },
     data() {
         return {
+            search_param: {},
             brand_list: [],
             result: [],
             list: {},
@@ -66,20 +67,39 @@ export default {
     },
     methods: {
         search (keyword) {
-            let query = `where ("title" contains "${keyword}")`;
-            api('product/read', {query})
+            let brand_id = this.$route.query.brand_id;
+            console.log(brand_id);
+            let brand_query;
+        // p.brand_id && (brand_query = `and "brand_id" = ${p.brand_id}`);
+
+            // param.brand_id && (brand_query = `and "brand_id" = ${param.brand_id}`);
+            // let query = `where("title" contains "${keyword || ''}" ${brand_query})`;
+
+            api('product/read', {where: {and: {brand_id}}})
             .then(r => this.result = r.data);
         },
-        // search (keyword) {
-        //     api('product/search', { or : { title : keyword } })
-        //     .then(r => this.result = r.data);
-        // },
         list_brand() {
             api('brand/read')
                 .then(r => this.brand_list = r.data);
-        }
+        },
+        set_brand(type, value) {
+            let condition = {};
+            condition[type] = value;
+
+            let o = this.search_param;
+            let n = Object.assign({}, o, condition);
+            this.$router.replace({query: n});
+        },
     },
     mixins: [ProductList],
+    watch: {
+        search_param: {
+            deep: true,
+            handler() {
+                this.search;
+            }
+        },
+    },
 }
 </script>
 
