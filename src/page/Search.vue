@@ -92,7 +92,6 @@ export default {
             api('product/read', {query:{brand_query} })
                 .then(r => {
                     this.result = r.data;
-                    console.log(this.result);
                 })
         },
     },
