@@ -12,16 +12,17 @@
             </div>
         </div>
         <div class="col-lg-2">
-            <SearchBar/>
-            <!-- <div class="search">
+            <!-- <SearchBar/> -->
+            <div class="search">
                 <input type="search" placeholder="search" autofocus>
                 <i class="fas fa-search"></i>
-            </div> -->
+            </div>
         </div>
         <div class="col-lg-2 log right">
             <div v-if="!uinfo">
                 <router-link to="/login">Sign In</router-link>
                 <i class="fas fa-sign-in-alt"></i>
+                <div class="test">请登录测试账号: admin 密码: 123</div>
             </div>
             <div v-else>
                 <div class="icon" @click="show_shortcut=!show_shortcut">
@@ -47,13 +48,13 @@
     </div>
 </template>
 <script>
-import SearchBar from './SearchBar';
+// import SearchBar from './SearchBar';
 import Cart from './Cart';
 import { count } from '../hub/cart';
 import session from '../lib/session';
 
 export default {
-    components: {Cart, SearchBar},
+    components: {Cart},
     mouted() {
         count();
     },
@@ -75,6 +76,21 @@ export default {
 </script>
 
 <style scoped>
+.search {
+    display: inline-block;
+    font-size: 18px;
+    border-bottom: 1px solid rgba(0,0,0,.5);
+}
+
+.search input {
+    outline: none;
+    padding: 5px;
+    border: 0;
+}
+.test {
+    font-size: 12px;
+    padding-top: 5px;
+}
 .nav-container {
   font-size: 0;
   padding-top: 15px;

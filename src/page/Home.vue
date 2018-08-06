@@ -149,7 +149,6 @@ export default {
         padding: 15px;
         padding-top: 5px;
         padding-left: 0;
-        text-align: center;
     }
     .slider,
     .main {
@@ -199,9 +198,10 @@ export default {
         width: 30%;
     }
     .buy button a {
-        color: rgba(0,0,0,.6);
+        color: rgba(0,0,0,.9);
     }
     .buy button a:hover {
-        color: rgba(0,0,0,.9);
+        color: rgba(0,0,0,.6);
+        font-size: 16px;
     }
 </style>

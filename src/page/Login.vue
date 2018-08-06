@@ -53,7 +53,7 @@
           !(password = this.current.password))
           return;
 
-        if (unique === 'admin' && password === 'adminadmin') {
+        if (unique === 'admin' && password === '123') {
           this.on_login_succeed({ id : 1, username : 'admin', is_admin : true });
           this.$router.push('/admin/user');
           alert('Yo.管理员');

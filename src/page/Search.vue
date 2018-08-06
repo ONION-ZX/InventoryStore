@@ -5,43 +5,35 @@
             <h3>Search</h3>
             <div class="result">Showing 36 results for "deniem"</div>
             <!-- <SearchBar/> -->
-            <div class="search">
+            <form @submit.prevent="search(keyword)" class="search">
                 <div class="con">
                     <input v-model="keyword" class="col-lg-12" type="search" placeholder="search..." autofocus>
+                    <button type="submit" hidden></button>
                 </div>
-            </div>
+            </form>
             <div class="row">
                 <div class="col col-lg-3 cats">
                     <div class="cat-item">
                         <h4>BRAND</h4>
                         <div class="item-group">
-                            <span>And WANDER</span>
-                            <span>Archbes</span>
-                            <span>Arpenteur</span>
-                            <span>Atelier & Repairs</span>
-                            <span>Bather</span>
-                            <span>Begg & Co</span>
-                            <span>Blue In Green</span>
-                            <span>Cabane De Zucca</span>
-                            <span>Arpenteur</span>  
-                            <span>Atelier & Repairs</span>
-                            <span>Bather</span>
-                            <span>Begg & Co</span>
-                            <span>Blue In Green</span>
-                            <span>Cabane De Zucca</span>
+                            <span v-for="(brand,i) in brand_list" :key="i">{{brand.name}}</span>
                         </div>
                     </div>
                 </div>
                 <div class="col col-lg-9">
-                    <div class="row">
+                    <div class="empty" v-if="!result">
+                        <h1>Not Found</h1>
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAOqSURBVGhD7Zl7qBVFHIBPapphgoKGBqFoJb5A/ctMolIUH0VCpSA+QMG3ZogJYRBqhvj6wyhCI6NQ8Y8SpBQlwkeYJEqJpj0wwSKhLN9vv289c7nKPefs7jmXcy7sBx844+7snJ2Z3/5mbi4jIyMjI6MJ0AFfxNn4Nr6O43AANsOapgVOwG/xFt4u4Bn8AJ/EmuNpPIqhs//jV7gG38L3cCMew3DNdXwf22FNMAevoZ37AV/DllgIR2I1XkXvOYFPYVVZhHbGTvmDksz/LrgPvf9f7ItV4VW0E+fwGStS0Ao/Rds5hQaJRuEJHIMu4sHogpbH8D90nj9vRRk0x93oj9luRSWxc9+jjdf3D5yCLlzLS7EStMezaJvlvpg65uJNtNG/cAtuwL14A8OPMow+hJXC59runqhUJi+h3wCj0DwMUynQEw+iDzSsVhIjnevN53e2Ii025IKzk+OtKMDDuAtdJ5XmM/T506NSSkajjXwTlYrjAm0MpqJ9+DAqpWQZlv02ymQ42odtUSkhTpUF+CfaiCMTh07Y9u4/Y/E4+qxi9Ef78F1USsBA/A29WQ9gnC+sKYbXX8QRVhThAfwcvf4f9JmFeBa9zkX/MU7CNliUUXgZvdGhNCLFwZjvPcFS4dJ261+/GQsxFutfq6YvhuYG12Uv9G164UIrEmB0882GBxlpimHaEV6YrsRSdMTn0HQ/JJdfYmusw6EOydoqK1IwCL9Gh/9RK0owEneiaXuSdSU98Ge0v1vR/ke8gFb+ipX8MjcmvqzTaL8nWyHr0Yr5UanpYFCx379jtF6O5yviLu64mJIbYg2hrsE4Uy4pP6J9j7YNF/KFSkwrI9gbaDZwBW23viaWBoNhWIlDhxVou29auJQv+AbTYmxfgiHyqXuTX9CP2RE0cw7/pz+hX+5y8FTGtjwLiPbIFrpZSEEfDG2Y7n+BZs2P4P10R0fsJIYfZB6Vdja4rm1juYVN+cI0Cwl5GcMomM73wzi4HZiJ59F7zSDSbGtDoJphwVMOC4cxybz12Casg3WYZmr2xvBN+MSKBDiKf6P3ugXPPYhhqJ1zcfFH+6VNck9DOBIeODi6SQgnNvujUh7zLHdifv7jZrvVZAjaV/vsIcg9uFX1F7oPfxdLZplVwNnjljvkW4uxQcwqw4GCiaDz1oX0SpWdiCaXYevtSLyDdXlWQxh5dqA31KKHcCjGpivOwrVoiPYYqFp+hE59/wxRdBQyMjIyMjIymj653B2ohkAKuuW/hwAAAABJRU5ErkJggg==">
+                    </div>
+                    <div class="row" v-else>
                         <div :key="index" v-for="(row, index) in result" class="col-lg-3">
                             <div class="card">
                                 <div class="thumbnail">
                                     <img :src="get_thumbnail(row)">
                                 </div>
                                 <div class="prev">
-                                    <div class="title">{{row.title}}</div>
-                                    <div class="price">{{row.price}}</div>
+                                    <router-link :to="'/detail/' + row.id" class="title">{{row.title}}</router-link>
+                                    <div class="price">$ {{row.price}}</div>
                                 </div>
                             </div>
                         </div>
@@ -55,54 +47,32 @@
 
 <script>
 import api from '../lib/api';
-import SearchBar from '../components/SearchBar';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import ProductList from '../mixins/ProductList';
 export default {
-    components: {Nav, Footer, SearchBar},
+    components: {Nav, Footer},
     mounted() {
-        this.prepare_search_param();
         this.search();
+        this.list_brand();
     },
     data() {
         return {
+            brand_list: [],
             result: [],
             list: {},
-            search_param: {},
             keyword: '',
         }
     },
     methods: {
-        prepare_search_param() {
-            let query = this.$route.query;
-            this.search_param = query;
+        search (keyword) {
+            api('product/search', { or : { title : keyword } })
+            .then(r => this.result = r.data);
         },
-        search() {
-            let param = this.search_param
-              , brand_query
-              , fabric_query
-              , color_query;
-            param.brand_id && (brand_query = `and "brand_id" = ${param.brand_id}`);
-            param.fabric_id && (fabric_query = `and "fabric_id" = ${param.fabric_id}`);
-            param.color_id && (color_query = `and "color_id" = ${param.color_id}`);
-            // let query = `where("title" contains ${param.keyword})`
-            // let query = `where("title" contains "${param.keyword || ''}" ${brand_query} ${fabric_query} ${color_query})`;
-
-            api('product/read', {query:{brand_query} })
-                .then(r => {
-                    this.result = r.data;
-                })
-        },
-    },
-    watch: {
-      '$route.query': {
-        deep: true,
-        handler() {
-          this.prepare_search_param();
-          this.search();
+        list_brand() {
+            api('brand/read')
+                .then(r => this.brand_list = r.data);
         }
-      }
     },
     mixins: [ProductList],
 }
@@ -160,6 +130,42 @@ export default {
         padding: 5px;
     }
     .prev {
-        font-size: 12px;
+        height: 80px;
+        padding-bottom: 5px;
     }
+    .prev > * {
+        padding-top: 7px;
+        padding-bottom: 5px;
+    }
+    .prev .title {
+        height: 50px;
+        font-size: 16px;
+        color: black;
+
+    }
+    .prev .title:hover {
+        color:#999;
+    }
+    .prev .price{
+        height: 30px;
+        font-size: 14px;
+    }
+    .empty {
+        position: relative;
+        left: 26%;
+        padding-top: 30px;
+        color:#555;
+
+    }
+    .empty h1 {
+        margin-right: 10px;
+        display: inline-block;
+        font-weight: normal;
+    }
+    .empty img {
+        position: relative;
+        top: 10px;
+        display: inline-block;
+    }
+
 </style>
