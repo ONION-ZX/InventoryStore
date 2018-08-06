@@ -66,9 +66,14 @@ export default {
     },
     methods: {
         search (keyword) {
-            api('product/search', { or : { title : keyword } })
+            let query = `where ("title" contains "${keyword}")`;
+            api('product/read', {query})
             .then(r => this.result = r.data);
         },
+        // search (keyword) {
+        //     api('product/search', { or : { title : keyword } })
+        //     .then(r => this.result = r.data);
+        // },
         list_brand() {
             api('brand/read')
                 .then(r => this.brand_list = r.data);
