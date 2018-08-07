@@ -19,7 +19,7 @@
         <div class="total">
             <div><span class="col-lg-12 right">total: {{total}}</span></div>
         </div>
-        <div class="pay">
+        <div class="pay right">
             <h3>PAY BY</h3>
             <div class="type">
                 <label>Wechat</label>
@@ -120,9 +120,6 @@ export default {
     .right {
         text-align: right;
         font-size: 15px;
-    }
-    .pay {
-        clear: both;
     }
     .pay .type {
         text-align: right;

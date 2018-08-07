@@ -5,9 +5,9 @@
         </div>
         <div class="col-lg-5 cat">
             <div class="nav">
-                <span class="nav-item">NEW ARRIVALS</span>
-                <span class="nav-item">CATEGORIES</span>
-                <span class="nav-item">BRANDS</span>
+                <span class="nav-item" @click="jump('.d_jump_new')">NEW ARRIVALS</span>
+                <span class="nav-item" @click="jump('.d_jump_hot')">HOT RECOMMAND</span>
+                <span class="nav-item" @click="jump('.d_jump_sale')">DISCOUNT</span>
                 <span class="nav-item">CONTACT</span>
             </div>
         </div>
@@ -74,6 +74,42 @@ export default {
       logout() {
         session.logout();
       },
+      jump(selector) {
+        let jump = document.querySelector(selector)
+        // 获取需要滚动的距离
+        let total = jump.offsetTop;
+        let distance = document.documentElement.scrollTop || document.body.scrollTop;
+        let step = total / 50;
+        if(total > distance){
+            smoothDown();
+        } else {
+            let newTotal = distance - total
+            step = newTotal / 50
+            smoothUp()
+        }
+        function smoothDown() {
+            if (distance < total) {
+            distance += step
+　　　　　　　document.body.scrollTop = distance
+            document.documentElement.scrollTop = distance
+            setTimeout(smoothDown, 20)
+          } else {
+            document.body.scrollTop = total
+            document.documentElement.scrollTop = total
+          }
+        }
+        function smoothUp() {
+            if (distance > total) {
+            distance -= step
+　　　　　　　document.body.scrollTop = distance
+            document.documentElement.scrollTop = distance
+            setTimeout(smoothUp, 20)
+          } else {
+            document.body.scrollTop = total
+            document.documentElement.scrollTop = total
+          }
+        }
+      }
     },
 }
 </script>

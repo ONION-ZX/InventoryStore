@@ -14,7 +14,7 @@
         </div>
         <div class="main">
             <div class="cat-item">
-                <div class="row">
+                <div class="row d_jump_new">
                     <h2>Latest Arrival</h2>
                     <div :key="i" class="col-lg-3" v-for="(row,i) in latest_arrival_list">
                         <div class="card">
@@ -36,7 +36,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row d_jump_hot">
                     <h2>Hot Recommend</h2>
                     <div :key="i" class="col-lg-3" v-for="(row,i) in hot_list">
                         <div class="card">
@@ -56,7 +56,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row d_jump_sale">
                     <h2>On Sale</h2>
                     <div :key="i" class="col-lg-3" v-for="(row,i) in on_sale_list">
                         <div class="card">
@@ -123,19 +123,19 @@ export default {
             });
         },
         read_on_sale() {
-            api('product/search', {where: {on_sale: true}})
+            api('product/read', {where: {on_sale: true},limit: 8})
                 .then(r => {
                     this.on_sale_list = r.data;
                 });
         },
         read_hot() {
-            api('product/search', {where: {hot: true}})
+            api('product/read', {where: {hot: true},limit: 8})
                 .then(r => {
                     this.hot_list = r.data;
                 });
         },
         read_latest_arrival() {
-            api('product/search', {where: {latest_arrival: true}})
+            api('product/read', {where: {latest_arrival: true},limit: 8})
                 .then(r => {
                     this.latest_arrival_list = r.data;
                 });

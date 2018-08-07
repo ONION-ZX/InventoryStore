@@ -12,7 +12,7 @@
                 <div><span class="col-lg-8">price: </span><span class="col-lg-4 right"> {{product.price}}</span></div>
                 <div><span class="col-lg-8">count: </span><span class="col-lg-4 right"> {{current.count}}</span></div>
                 <div><span class="col-lg-8">total: </span><span class="col-lg-4 right"> {{total}}</span></div>
-                <div class="pay">
+                <div class="pay right">
                     <h3>PAY BY</h3>
                     <div class="type">
                         <label>Wechat</label>
