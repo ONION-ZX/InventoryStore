@@ -39,7 +39,14 @@
                                 </div>
                                 <div class="prev">
                                     <router-link :to="'/detail/' + row.id" class="title">{{row.title}}</router-link>
-                                    <div class="price">$ {{row.price}}</div>
+                                    <div class="price">
+                                         <span class="col-lg-6 left">$ {{row.price}}</span>
+                                         <div class="col-lg-6 right">
+                                             <button class="contrast">
+                                            <router-link :to="'/detail/' + row.id">Detail</router-link>
+                                            </button>
+                                         </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -113,6 +120,9 @@ export default {
 </script>
 
 <style scoped>
+    button {
+        line-height: 1;
+    }
     .result {
         font-size: 12px;
         color: rgba(0,0,0,.6);
@@ -162,17 +172,24 @@ export default {
     }
     .card {
         padding: 5px;
+        height: 312px;
+        padding-bottom: 10px;
+    }
+    .card .left {
+        text-align: left;
     }
     .prev {
-        height: 80px;
+        height: 68px;
         padding-bottom: 5px;
     }
     .prev > * {
+        text-align: center;
         padding-top: 7px;
         padding-bottom: 5px;
     }
-    .prev .title {
-        height: 50px;
+    .prev a {
+        height: 30px;
+        display: block;
         font-size: 16px;
         color: black;
 
@@ -181,8 +198,25 @@ export default {
         color:#999;
     }
     .prev .price{
+        padding-right: 8px;
         height: 30px;
         font-size: 14px;
+        margin-top: 28px;
+    }
+    .price > * {
+        display: inline-block;
+        vertical-align: center;
+    }
+    .price a {
+        height: 18px;
+    }
+    .price button a {
+        color: #fff;
+        font: 13px sans-serif;
+    }
+    .price button a:hover {
+        color: black;
+        
     }
     .empty {
         position: relative;
@@ -200,6 +234,9 @@ export default {
         position: relative;
         top: 10px;
         display: inline-block;
+    }
+    .contrast {
+        background: rgba(0,0,0,.6);
     }
 
 </style>

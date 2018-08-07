@@ -33,12 +33,12 @@
   button {
     padding: 5px;
   }
-  .contrast {
+  .contrast, .decontrast:hover {
     background: #000;
     color: #fff;
     cursor: pointer;
   }
-  .contrast:hover {
+  .contrast:hover, .decontrast {
     background: #fff;
     color: #000;
   }

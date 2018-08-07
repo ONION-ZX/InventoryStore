@@ -22,7 +22,9 @@
                                 <img :src="get_thumbnail(row)">
                             </div>
                             <div class="info">
-                                <h4 class="title">{{row.title}}</h4>
+                                <router-link to="'/detail/'+row.id">
+                                    <h4 class="title">{{row.title}}</h4>
+                                </router-link>
                                 <div class="desc">{{row.desc}}</div>
                                 <div class="buy">
                                     <div class="price">${{row.price}}</div>
@@ -144,12 +146,6 @@ export default {
 </script>
 
 <style scoped>
-    .desc {
-        display: block;
-        padding: 15px;
-        padding-top: 5px;
-        padding-left: 0;
-    }
     .slider,
     .main {
         padding-top: 10px;
@@ -161,7 +157,10 @@ export default {
     .card {
         margin-right: 5px;
         background: rgba(0,0,0,.08);
-        padding-bottom: 10px;
+        padding-bottom: 23px;
+    }
+    .card h4 {
+        color: black;
     }
     .card img:hover {
         opacity: .8;
@@ -169,6 +168,17 @@ export default {
     .info {
         padding: 5px;
         height: 130px;
+    }
+    .info .title {
+        text-align: center;
+        padding: 5px;
+        height: 40px;
+    }
+
+    .info .desc {
+        display: block;
+        height: 40px;
+        text-align: center;
     }
 
     .row {
@@ -185,10 +195,13 @@ export default {
         margin-left: 0;
     }
     .buy {
+        margin-top: 30px;
         font-size: 0;
+        height: 30px;
     }
     .buy > * {
         display: inline-block;
+        vertical-align: center;
     }
     .buy .price {
         font-size: 15px;
