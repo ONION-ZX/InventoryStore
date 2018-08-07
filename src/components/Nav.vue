@@ -13,10 +13,12 @@
         </div>
         <div class="col-lg-2">
             <!-- <SearchBar/> -->
-            <div class="search">
-                <input type="search" placeholder="search" autofocus>
+            <form @submit.prevent="$router.push({path: '/search', query: {keyword}})" 
+                 class="search">
+                <input v-model="keyword" type="search" placeholder="search" autofocus>
                 <i class="fas fa-search"></i>
-            </div>
+                <button type="submit" hidden></button>
+            </form>
         </div>
         <div class="col-lg-2 log right">
             <div v-if="!uinfo">
@@ -60,6 +62,7 @@ export default {
     },
     data() {
         return {
+            keyword: null,
             show_cart: false,
             uinfo: session.uinfo(),
             show_shortcut: false,

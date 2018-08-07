@@ -66,7 +66,7 @@ import ProductList from '../mixins/ProductList';
 export default {
     components: {Nav, Footer},
     mounted() {
-        this.search();
+        this.search(this.$route.query.keyword);
         this.list_brand();
         this.list_fabric();
     },
