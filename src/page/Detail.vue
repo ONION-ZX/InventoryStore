@@ -84,10 +84,10 @@ export default {
     components: {Nav, Footer},
     mixins: [ProductList ],
     data() {
-        return {
+        return {           
             detail: {},
             count: 1,
-            user_id: session.uinfo().id,
+            user_id: session.uinfo().id || '',
         }
     },
     mounted() {
@@ -99,11 +99,16 @@ export default {
         update,
         product_exist,
         add_to_cart(user_id, product_id, count) {
-            if(product_exist(product_id)) {
+            if(!user_id) {
+                alert('请先登录!')
+                this.$router.push('/login');
+            } else {
+                if(product_exist(product_id)) {
                 let product = find_by_product_id(product_id);
                 product.count += count;
-            } else {
-                add(user_id, product_id, count);
+                } else {
+                    add(user_id, product_id, count);
+                }
             }
         },
         find(id) {
@@ -116,14 +121,21 @@ export default {
             return this.$route.params.id;
         },
         to_new_order() {
-            return {
-                path: '/new-order',
-                query: {
-                    id: this.$route.params.id,
-                    count: this.count,
+            if(session.logged_in()) {
+                return {
+                    path: '/new-order',
+                    query: {
+                        user_id: this.user_id,
+                        id: this.$route.params.id,
+                        count: this.count,
+                    }
+                }
+            } else {
+                return {
+                    path: '/login',
                 }
             }
-        },        
+        },       
         add() {
             this.count ++;
         },

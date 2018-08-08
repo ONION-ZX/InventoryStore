@@ -42,7 +42,6 @@ export default {
     components: {Nav, Footer},
     mounted() {
         this.current = Object.assign({}, this.current, this.$route.query);
-        console.log(this.current);
         this.find(this.current.id);
     },
     data() {

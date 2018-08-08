@@ -6,7 +6,7 @@
         <div class="col-lg-5 cat">
             <div class="nav">
                 <span class="nav-item" @click="jump('.d_jump_new')">NEW ARRIVALS</span>
-                <span class="nav-item" @click="jump('.d_jump_hot')">HOT RECOMMAND</span>
+                <span class="nav-item" @click="jump('.d_jump_hot')">HOT</span>
                 <span class="nav-item" @click="jump('.d_jump_sale')">DISCOUNT</span>
                 <span class="nav-item">CONTACT</span>
             </div>
@@ -92,7 +92,7 @@ export default {
             distance += step
 　　　　　　　document.body.scrollTop = distance
             document.documentElement.scrollTop = distance
-            setTimeout(smoothDown, 20)
+            setTimeout(smoothDown, 10)
           } else {
             document.body.scrollTop = total
             document.documentElement.scrollTop = total
@@ -103,7 +103,7 @@ export default {
             distance -= step
 　　　　　　　document.body.scrollTop = distance
             document.documentElement.scrollTop = distance
-            setTimeout(smoothUp, 20)
+            setTimeout(smoothUp, 10)
           } else {
             document.body.scrollTop = total
             document.documentElement.scrollTop = total
