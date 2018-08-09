@@ -24,7 +24,7 @@
             <div v-if="!uinfo">
                 <router-link to="/login">Sign In</router-link>
                 <i class="fas fa-sign-in-alt"></i>
-                <div class="test">请登录测试账号: admin 密码: 123</div>
+                <div class="test">请登录测试账号: Linding 密码: linkding</div>
             </div>
             <div v-else>
                 <div class="icon" @click="show_shortcut=!show_shortcut">
