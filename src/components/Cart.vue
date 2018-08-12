@@ -45,15 +45,16 @@
 import ProductList from '../mixins/ProductList';
 import { each, hub, all, remove, count } from '../hub/cart';
 export default {
-    mounted(){
+    mounted(){        
+        console.log(this.hub)
         this.get_product();
     },
     props: ['show_cart'],
     data() {
         return {
-            hub:all(),
+            hub: all() || {cart: {}},
             product_id_list: [],
-            cart_info:Object.values(hub.cart),
+            cart_info: Object.values(hub.cart) || {},
         };
     },
     methods: {

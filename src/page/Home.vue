@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <Nav/>
-        <div class="slider">
+        <div class="slider" v-if="swiper.length">
             <swiper :options="swiperOption">
                 <swiper-slide v-for="(it, index) in swiper" :key="index">
                     <router-link to="/search">
@@ -104,8 +104,12 @@ export default {
             latest_arrival_list: [],
             swiper: [],
             swiperOption : {
+                autoplay:true,
+                autoplay: {
+                    delay:100,
+                },
                 keyboard   : true,
-                // mousewheel : true,
+                mousewheel : true,
                 clickable  : false,
                 loop       : true,
                 autoplay   : true,

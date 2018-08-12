@@ -29,6 +29,7 @@ export default {
   },
 
   replace_uinfo (row) {
+    console.log(row);
     delete row.password;
     localStorage.setItem('uinfo', JSON.stringify(row));
   },

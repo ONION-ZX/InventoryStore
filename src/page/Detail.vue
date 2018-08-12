@@ -87,10 +87,11 @@ export default {
         return {           
             detail: {},
             count: 1,
-            user_id: session.uinfo().id || '',
+            user_id: session.uinfo().id,
         }
     },
     mounted() {
+        console.log(session.uinfo());
         let id = this.get_product_id();
         this.find(id);
     },
@@ -148,9 +149,6 @@ export default {
 </script>
 
 <style scoped>
-    button, .purchase {
-        border-radius: 4px;
-    }
     h2 {
         margin-top: 20px;
         margin-bottom: 20px;

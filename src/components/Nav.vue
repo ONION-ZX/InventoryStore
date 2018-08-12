@@ -1,48 +1,49 @@
 <template>
-    <div class="nav-container">
-        <div class="col-lg-3 logo left">
-            <router-link to="/"><img src="../assets/logo.png"></router-link>
-        </div>
-        <div class="col-lg-5 cat">
-            <div class="nav">
-                <span class="nav-item" @click="jump('.d_jump_new')">NEW ARRIVALS</span>
-                <span class="nav-item" @click="jump('.d_jump_hot')">HOT</span>
-                <span class="nav-item" @click="jump('.d_jump_sale')">DISCOUNT</span>
-                <span class="nav-item">CONTACT</span>
+    <div class="container">
+        <div class="nav-container">
+            <div class="col-lg-3 logo left">
+                <router-link to="/"><img src="../assets/logo.png"></router-link>
             </div>
-        </div>
-        <div class="col-lg-2">
-            <!-- <SearchBar/> -->
-            <form @submit.prevent="$router.push({path: '/search', query: {keyword}})" 
-                 class="search">
-                <input v-model="keyword" type="search" placeholder="search" autofocus>
-                <i class="fas fa-search"></i>
-                <button type="submit" hidden></button>
-            </form>
-        </div>
-        <div class="col-lg-2 log right">
-            <div v-if="!uinfo">
-                <router-link to="/login">Sign In</router-link>
-                <i class="fas fa-sign-in-alt"></i>
-                <div class="test">请登录测试账号: admin 密码: 123</div>
+            <div class="col-lg-5 cat">
+                <div class="nav">
+                    <span class="nav-item" @click="jump('.d_jump_new')">NEW ARRIVALS</span>
+                    <span class="nav-item" @click="jump('.d_jump_hot')">HOT</span>
+                    <span class="nav-item" @click="jump('.d_jump_sale')">DISCOUNT</span>
+                    <span class="nav-item">CONTACT</span>
+                </div>
             </div>
-            <div v-else>
-                <div class="icon" @click="show_shortcut=!show_shortcut">
-                    <i class="far fa-user-circle"></i>
+            <div class="col-lg-2">
+                <!-- <SearchBar/> -->
+                <form @submit.prevent="$router.push({path: '/search', query: {keyword}})" 
+                    class="search">
+                    <input v-model="keyword" type="search" placeholder="search" autofocus>
+                    <i class="fas fa-search"></i>
+                    <button type="submit" hidden></button>
+                </form>
+            </div>
+            <div class="col-lg-2 log right">
+                <div v-if="!uinfo">
+                    <router-link to="/login">Sign In</router-link>
+                    <i class="fas fa-sign-in-alt"></i>
+                    <div class="test">请登录测试账号: admin 密码: 123</div>
                 </div>
-                <div class="cart" @click="show_cart=!show_cart">
-                    <i class="fas fa-cart-arrow-down"></i>
-                    <span class="count">{{counts}}</span>
-                </div>
-                <Cart :show_cart="show_cart" v-if="show_cart"/>
-                <div class="shortcut" v-if="show_shortcut">
-                    <div class="short">
-                        <span><router-link to="/me">Profile</router-link></span>
-                        <i class="fas fa-smile-wink"></i>
+                <div v-else>
+                    <div class="icon" @click="show_shortcut=!show_shortcut">
+                        <i class="far fa-user-circle"></i>
                     </div>
-                    <div class="short" @click="logout">
-                        <span>Log Out</span>
-                        <i class="fas fa-sign-out-alt"></i>
+                    <div class="cart" @click="show_cart=!show_cart">
+                        <i class="fas fa-cart-arrow-down"></i>
+                    </div>
+                    <Cart :show_cart="show_cart" v-if="show_cart"/>
+                    <div class="shortcut" v-if="show_shortcut">
+                        <div class="short">
+                            <span><router-link to="/me/order">Profile</router-link></span>
+                            <i class="fas fa-smile-wink"></i>
+                        </div>
+                        <div class="short" @click="logout">
+                            <span>Log Out</span>
+                            <i class="fas fa-sign-out-alt"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -132,7 +133,6 @@ export default {
 }
 .nav-container {
   font-size: 0;
-  padding-top: 15px;
   padding-bottom: 10px;
   border-bottom: 1px solid rgba(0,0,0,.5);
 }

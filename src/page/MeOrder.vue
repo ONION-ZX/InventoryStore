@@ -17,9 +17,13 @@
           <td><span @click="show_detail(row)" class="anchor">详情</span></td>
           <td>
             <div>
-              <div v-if="!row._paid">
-                <router-link :to="`/pay/${row.oid}`" class="btn-small">付款</router-link>
-                <span @click="cancel(row.id)" class="anchor btn-small">取消订单</span>
+              <div v-if="!row._paid" class="btn-group">
+                <button>
+                  <router-link :to="`/pay/${row.oid}`" class="btn-small">去付款</router-link>
+                </button>
+                <button>
+                  <span @click="cancel(row.id)" class="anchor btn-small">取消订单</span>
+                </button>
               </div>
               <div v-else>-</div>
             </div>
@@ -33,16 +37,23 @@
       <div class="card modal-content">
         <h2>{{product.title}}</h2>
         <div class="cute-form">
-          <span class="key">价格</span>
-          <span class="value">{{product.price || '-'}}</span>
+          <span class="value"><img :src="get_thumbnail(product)"></span>
         </div>
         <div class="cute-form">
-          <span class="key">性别</span>
-          <span class="value">{{product.sex || '-'}}</span>
+          <span class="key">BRAND: </span>
+          <span class="value">{{product.$brand.name || '-'}}</span>
         </div>
         <div class="cute-form">
-          <span class="key">品种</span>
-          <span class="value">{{product.breed_id || '-'}}</span>
+          <span class="key">PRICE: </span>
+          <span class="value">$ {{product.price || '-'}}</span>
+        </div>
+        <div class="cute-form">
+          <span class="key">COLOR: </span>
+          <span class="value">{{product.$color.name || '-'}}</span>
+        </div>
+        <div class="cute-form">
+          <span class="key">SIZE: </span>
+          <span class="value">{{product.$size.name || '-'}}</span>
         </div>
       </div>
     </div>
@@ -50,19 +61,28 @@
 </template>
 
 <script>
+  import ProductList from '../mixins/ProductList';
+  import Pagination from '../components/Pagination';
   import api     from '../lib/api';
   import session from '../lib/session';
 
   export default {
+    components: { Pagination },
     mounted () {
       this.read();
     },
 
     data () {
       return {
-        current        : {},
-        product            : {},
-        list           : [],
+        current:{},
+        product:{},
+        list:[],
+        with: [
+               {relation: 'has_one', model: 'brand'},
+               {relation: 'has_one', model: 'size'},
+               {relation: 'has_one', model: 'fabric'},
+               {relation: 'has_one', model: 'color'},  
+           ],
         detail_visible : false,
       };
     },
@@ -75,7 +95,7 @@
       },
 
       find_product (product_id) {
-        api('product/find', { id : product_id })
+        api('product/find', { id : product_id ,with: this.with})
           .then(r => {
             this.product = r.data;
           });
@@ -100,17 +120,16 @@
           });
       },
     },
-
-
+    mixins: [ ProductList ],
   };
 </script>
 
 <style scoped>
-
   .modal-content {
+    padding: 15px;
     position: fixed;
     background: #fff;
-    width: 300px;
+    width: 500px;
     top: 100px;
     margin-left: 0;
     margin-right: 0;
@@ -124,5 +143,21 @@
     bottom: 0;
     left: 0;
     right: 0;
+  }
+  .btn-group button {
+    border: 0;
+  }
+  .btn-group button:hover {
+    border-bottom: 2px solid rgba(0, 0, 0, .6);
+  }
+  
+  .btn-group button:first-child {
+    border-right: 0;
+  }
+  .btn-group button > * {
+    color: rgba(0, 0, 0, .6);
+  }
+  .value img {
+    max-width: 50%;
   }
 </style>

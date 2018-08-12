@@ -52,6 +52,9 @@ button.active {
   .table {
     overflow: auto;
   }
+  table {
+      width: 100%;
+  }
 
   button {
       border-collapse:collapse;
