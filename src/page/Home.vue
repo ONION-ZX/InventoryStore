@@ -219,6 +219,5 @@ export default {
     }
     .buy button a:hover {
         color: rgba(0,0,0,.6);
-        font-size: 16px;
     }
 </style>
