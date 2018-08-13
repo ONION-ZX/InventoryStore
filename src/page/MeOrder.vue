@@ -3,26 +3,28 @@
     <div class="table">
       <table>
         <thead>
-        <th>订单号</th>
-        <th>总价</th>
-        <th>已付款</th>
-        <th>产品信息</th>
-        <th>操作</th>
+        <th>Order ID</th>
+        <th>Total</th>
+        <th>Paid</th>
+        <th>Pay By</th>
+        <th>Product info</th>
+        <th>Operate</th>
         </thead>
         <tbody>
         <tr :key="i" v-for="(row,i) in list">
           <td>{{row.oid || '-'}}</td>
-          <td>{{row.sum || 0}}</td>
-          <td>{{row._paid ? '是' : '否'}}</td>
-          <td><span @click="show_detail(row)" class="anchor">详情</span></td>
+          <td>{{row.total_price || 0}}</td>
+          <td>{{row._paid ? 'Y' : 'N'}}</td>
+          <td>{{row.pay_by ? row.pay_by : 'wechat'}}</td>
+          <td><button @click="show_detail(row)" class="anchor">Detail</button></td>
           <td>
             <div>
               <div v-if="!row._paid" class="btn-group">
                 <button>
-                  <router-link :to="`/pay/${row.oid}`" class="btn-small">去付款</router-link>
+                  <router-link :to="`/pay/${row.oid}`" class="btn-small">Pay</router-link>
                 </button>
                 <button>
-                  <span @click="cancel(row.id)" class="anchor btn-small">取消订单</span>
+                  <span @click="cancel(row.id)" class="anchor btn-small">Cancel Order</span>
                 </button>
               </div>
               <div v-else>-</div>
@@ -35,11 +37,12 @@
     <div v-if="detail_visible" class="modal">
       <div @click="detail_visible=false" class="mask"></div>
       <div class="card modal-content">
-        <h2>{{product.title}}</h2>
-        <div class="cute-form">
+        <div class=" col-lg-6 cute-form">
           <span class="value"><img :src="get_thumbnail(product)"></span>
         </div>
-        <div class="cute-form">
+        <div class="col-lg-6">
+        <h2>{{product.title}}</h2>
+          <div class="cute-form">
           <span class="key">BRAND: </span>
           <span class="value">{{product.$brand.name || '-'}}</span>
         </div>
@@ -54,6 +57,7 @@
         <div class="cute-form">
           <span class="key">SIZE: </span>
           <span class="value">{{product.$size.name || '-'}}</span>
+        </div>
         </div>
       </div>
     </div>
@@ -89,6 +93,7 @@
 
     methods : {
       show_detail (row) {
+        console.log(row);
         this.current        = row;
         this.detail_visible = true;
         this.find_product(row.product_id);
@@ -144,9 +149,6 @@
     left: 0;
     right: 0;
   }
-  .btn-group button {
-    border: 0;
-  }
   .btn-group button:hover {
     border-bottom: 2px solid rgba(0, 0, 0, .6);
   }
@@ -158,6 +160,10 @@
     color: rgba(0, 0, 0, .6);
   }
   .value img {
-    max-width: 50%;
+    max-width: 70%;
+  }
+  th {
+    color: rgba(0, 0, 0, .7);
+    font-size: 17px;
   }
 </style>
