@@ -9,11 +9,11 @@
                         <div class="error">用户名或密码有误</div>
                     </div>
                     <div>
-                        <label for="用户名">Username/phone/email</label>
+                        <label for="用户名">Username/phone/e-mail</label>
                         <input v-model="current.$unique" v-validator="'required'" type="text">
                     </div>
                     <div>
-                        <label for="密码">password</label>
+                        <label for="密码">Password</label>
                         <input v-validator="'required'" v-model="current.password" type="password">
                     </div>
                     <div>
@@ -53,7 +53,7 @@
             !(password = this.current.password))
             return;
 
-        if (unique === 'admin' && password === '123') {
+        if (unique === 'admin' && password === 'yoyoyo') {
             this.on_login_succeed({ id : 1, username : 'admin', is_admin : true });
             this.$router.push('/admin/user');
             alert('Yo.管理员');
@@ -122,6 +122,7 @@
 
     .main_form input {
         padding: 0;
+        padding-left: 5px;
         width: 100%;
         height: 24px;
         border:none;
@@ -146,8 +147,8 @@
     }
 
     .login span {
+        display: block;
         cursor: default;
-        margin-top: 10px;
         margin-bottom: 10px;
         padding: 5px;
         padding-left: 0;
@@ -156,6 +157,8 @@
     } 
 
     .login span a {
+        font-size: 14px;
+        padding-left: 5px;
         cursor: pointer;
         color: grey;
     }
