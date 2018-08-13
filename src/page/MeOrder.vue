@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" v-if="list">
     <div class="table">
       <table>
         <thead>
@@ -27,7 +27,11 @@
                   <span @click="cancel(row.id)" class="anchor btn-small">Cancel Order</span>
                 </button>
               </div>
-              <div v-else>-</div>
+              <div v-else>
+                <button>
+                  <span @click="remove(row.id)" class="anchor btn-small">Delete Order</span>
+                </button>
+              </div>
             </div>
           </td>
         </tr>
@@ -61,6 +65,13 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="empty" v-else>
+    <div>
+      <img src="data:image/png;base64,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">
+    </div>
+    <span>No order is available</span>
+    <p><router-link to="/search">Go to choose good things ⁽⁽ଘ(ˊᵕˋ)ଓ⁾⁾* </router-link></p>
   </div>
 </template>
 
@@ -114,6 +125,14 @@
           this.list = r.data;
         });
       },
+      remove(id) {
+        if(!confirm('delete order?')) 
+          return;
+        api('order/delete', {id})
+          .then(r => {
+            this.read();
+          })
+      },
 
       cancel (id) {
         if (!confirm('是否要取消此订单？'))
@@ -165,5 +184,25 @@
   th {
     color: rgba(0, 0, 0, .7);
     font-size: 17px;
+  }
+  .empty {
+    padding-top: 50px;
+  }
+  .empty img {
+    margin-left: 200px;
+  }
+  .empty span {
+    font-size: 20px;
+    padding-top: 30px;
+    display: block;
+    margin-top: 10px;
+    margin-left: 165px;
+  }
+  .empty a {
+    color:slategrey;
+    margin-left: 124px;
+  }
+  .empty a:hover {
+    color:silver;
   }
 </style>
