@@ -22,7 +22,6 @@
                 <div class="col-lg-2">
                     <div class="price">$ {{it.$product.price}}</div>
                     <div class="subtotal">$ {{it.$product.price * it.count}}</div>
-                    <!-- {{hub.cart[Object.keys(hub.cart)[0]].product_id}} -->
                     <div>
                         <button class="remove contrast" @click="remove(it.id)">Remove</button>
                     </div>
@@ -45,26 +44,37 @@
 import ProductList from '../mixins/ProductList';
 import { each, hub, all, remove, count } from '../hub/cart';
 export default {
-    mounted(){        
-        console.log(this.hub)
+    mounted(){
+        this.clone_hub();
         this.get_product();
     },
     props: ['show_cart'],
     data() {
         return {
-            hub: all() || {cart: {}},
+            hub,
             product_id_list: [],
-            cart_info: Object.values(hub.cart) || {},
+            cart_info: Object.values(hub.cart),
         };
     },
     methods: {
+        all,
         count,
         remove,
+        clone_hub() {
+            let all = this.all();
+            if(all.cart == null) {
+                all.cart = {};
+                this.hub = Object.assign({},all);
+            }
+        },
         get_product() {
-            this.cart_info.forEach(row => {
-                let id = row.id;
-                this.product_id_list.push(id);
-            });
+            if(this.cart_info) {
+                console.log(1);
+                this.cart_info.forEach(row => {
+                    let id = row.id;
+                    this.product_id_list.push(id);
+                });
+            }
         },
         to_new_order() {
             return {

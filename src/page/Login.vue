@@ -4,7 +4,7 @@
         <div class="container">
             <div class="login">
                 <form @submit.prevent="submit()" class="main_form" autocomplete="off">
-                    <h2>LOGIN</h2>
+                    <h2>SIGN IN</h2>
                     <div v-if="login_failed" class="error-list">
                         <div class="error">用户名或密码有误</div>
                     </div>

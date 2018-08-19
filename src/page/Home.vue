@@ -109,7 +109,6 @@ export default {
                     delay:100,
                 },
                 keyboard   : true,
-                mousewheel : true,
                 clickable  : false,
                 loop       : true,
                 autoplay   : true,

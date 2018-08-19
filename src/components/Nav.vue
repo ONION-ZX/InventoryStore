@@ -51,14 +51,13 @@
     </div>
 </template>
 <script>
-// import SearchBar from './SearchBar';
 import Cart from './Cart';
 import { count } from '../hub/cart';
 import session from '../lib/session';
 
 export default {
-    components: {Cart},
-    mouted() {
+    components: { Cart },
+    mounted() {
         count();
     },
     data() {

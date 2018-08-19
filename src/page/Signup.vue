@@ -4,13 +4,13 @@
         <div class="container">
             <div class="login">
                 <form @submit="submit" class="main_form" autocomplete="off">
-                    <h2>欢迎注册羊羊车</h2>
+                    <h2>BlueInGreen</h2>
                     <div class="row tac tab-title">
-                        <div @click="signup_by = 'phone'" :class="'col-lg-6 ' + (signup_by == 'phone' ? 'active' : '')">手机注册</div>
-                        <div @click="signup_by = 'mail'" :class="'col-lg-6 ' + (signup_by == 'mail' ? 'active' : '')">邮箱注册</div>
+                        <div @click="signup_by = 'phone'" :class="'col-lg-4 ' + (signup_by == 'phone' ? 'active' : '')">Signup by Phone</div>
+                        <div @click="signup_by = 'mail'" :class="'col-lg-4 ' + (signup_by == 'mail' ? 'active' : '')">Signup by email</div>
                     </div>
                     <div>
-                        <label for="用户名">用户名</label>
+                        <label for="用户名">Username</label>
                         <div class="veri-bar">
                             <input v-validator="'required|min_length:4|max_length:18|username'"
                                    v-model="current.username"  
@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     <div>
-                        <label  for="密码">密码</label>
+                        <label  for="密码">Password</label>
                         <div class="veri-bar">
                             <input id="password"
                                    v-model="current.password" 
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <div>
-                        <label  for="密码">重复密码</label>
+                        <label  for="密码">Repeat password</label>
                         <div class="veri-bar">
                             <input v-model="current.password2" 
                                    v-validator="'required|shadow:#password'" 
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                     <div :key="'phone'" v-if="signup_by == 'phone'">
-                        <label for="telephone">手机号码</label>
+                        <label for="telephone">Phone</label>
                         <div class="veri-bar">
                             <input v-model="current.phone" class="veri"
                                    type="text"
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     <div :key="'mail'" v-if="signup_by == 'mail'">
-                        <label for="mail">邮箱</label>
+                        <label for="mail">mail</label>
                         <div class="veri-bar">
                             <input v-validator="'required|mail|not_exist:user,mail'"
                                    v-model="current.mail" class="veri"
@@ -64,7 +64,7 @@
                         </div>
                     </div>
                     <div>
-                        <label for="verification_code">验证码</label>
+                        <label for="verification_code">Code</label>
                         <div class="veri-bar">
                             <input v-model="current.user_code" class="veri_code"
                                type="text">
@@ -73,7 +73,7 @@
                             <div class="error">验证码有误</div>
                         </div>
                      </div>
-                    <button type="submit" class="db" disabled="false">注册</button>
+                    <button type="submit" class="db" disabled="false">Signup</button>
                 </form>
             </div>
         </div>
@@ -84,12 +84,12 @@
 <script>
   import Nav from '../components/Nav';
   import Footer from '../components/Footer';
-  import validator from '../directive/validator';
+//   import validator from '../directive/validator';
   import api from '../lib/api';
 
   export default {
-      components: {Nav, Footer},
-      directives : { validator },
+      components: { Nav, Footer},
+    //   directives : { validator },
       data(){
           return {
               current: {},
@@ -98,7 +98,7 @@
                   countdown: 0,
               },
               signup_by: 'phone',
-              btn_text: '获取验证码',
+              btn_text: 'get code',
               verify_code: '',
               verify_str: '',
               invalid_code: false,
@@ -160,11 +160,14 @@
 </script>
 
 <style scoped>
-    .container {
-        /* background:#efefef;
-        width: 1200px; */
-        height: 435px;
-    } 
+    .tab-title {
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+    .tab-title .col-lg-4 {
+        text-align: center;
+        margin-right: 60px;
+    }
     h2 {
         margin: 0;
         font-size: 22px;
@@ -174,7 +177,7 @@
     }
 
     .active {
-        border-bottom: 2px solid rgba(0,0,0,.3);
+        border-left: 2px solid rgba(0,0,0,.3);
     }
 
     label {
@@ -198,13 +201,12 @@
     .main_form input,
     .main_form button {
         width: 100%;
-        height: 30px;
         border:none;
         margin-bottom: 5px;
     }
 
     .main_form input {
-        padding: 10px;
+        /* padding: 10px; */
         margin-top: 5px;
         border: 1px solid #c5c1c1;
     }
@@ -225,9 +227,8 @@
     .tab-title {
         margin-bottom: 10px;
     }
-
-    .tab-title div {
-        padding: 5px;
+    .veri-bar {
+        font-size: 0;
     }
 
     .veri-bar .veri,
@@ -237,7 +238,7 @@
     }  
 
     .veri-bar .veri {
-        width: 70%;
+        width: 60%;
     }
 
     .veri-bar .get {

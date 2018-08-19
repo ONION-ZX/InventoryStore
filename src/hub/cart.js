@@ -44,7 +44,10 @@ function update (user_id, product_id, row) {
 }
 
 function count () {
-  return Object.keys(hub.cart).length || 0;
+  if(hub.cart == null) {
+    hub.cart = {};
+  }
+  return Object.keys(hub.cart).length;
 }
 
 function find_by_product_id (product_id) {
