@@ -31,7 +31,7 @@ button.active {
      color: rgba(0,0,0,.6);
   }
 
-  .operate:hover {
+  .operate button:hover {
       background:rgba(0,0,0,.6);
       color: #fff;
   }

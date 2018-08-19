@@ -19,30 +19,6 @@
                 <button type="submit" hidden>搜</button>
               </form>
             </div>
-            <!-- <form v-if="show_form" @submit="cou($event)">
-              <div class="input-control">
-                <label>下单用户</label>
-                <Dropdown :onSelect="set_order_user" :api="'user.username,realname'" :list = "user_list" displayKey="username" ref="edit_publisher"/>                
-              </div>
-              <div class="input-control">
-                <label>支付方式</label>
-                <input v-validator="'required'" type="text" v-model="current.pay_by">
-              </div>
-              <div class="input-control">
-                <label>备注</label>
-                <input type="text" v-model="current.memo">
-              </div>
-              <div class="input-control">
-                <label>合计</label>
-                <input type="text" v-model="current.total_price">
-              </div>
-              <div class="input-control">
-                <div class="btn-group">
-                  <button class="btn-primary" type="submit">提交</button>
-                  <button @click="show_form=false" type="button">取消</button>
-                </div>
-              </div>
-            </form> -->
             <div class="table">
               <table>
                 <thead>
@@ -95,15 +71,8 @@
       };
     },
     mounted() {
-      this.read();
     },
     methods: {
-      read() {
-        api('order/read')
-          .then(r => {
-            this.list = r.data;
-          })
-      }
     },
     mixins : [ AdminPage ],
   };
