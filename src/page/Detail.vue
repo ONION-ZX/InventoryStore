@@ -91,7 +91,6 @@ export default {
         }
     },
     mounted() {
-        console.log(session.uinfo());
         let id = this.get_product_id();
         this.find(id);
     },

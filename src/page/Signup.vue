@@ -99,7 +99,7 @@
               },
               signup_by: 'phone',
               btn_text: 'get code',
-              verify_code: '',
+              code: '',
               verify_str: '',
               invalid_code: false,
 
