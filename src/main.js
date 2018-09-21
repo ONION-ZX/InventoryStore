@@ -6,6 +6,7 @@ import '../node_modules/@fortawesome/fontawesome-free/js/all.js';
 //swiper
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import Vue from 'vue';
+import Vuex from 'vuex';
 import App from './App.vue';
 import Home from './page/Home';
 import Detail from './page/Detail';
@@ -37,6 +38,7 @@ import Swiper from './page/admin/Swiper';
 import Router from 'vue-router';
 
 Vue.use(Router);
+Vue.use(Vuex);
 Vue.use(VueAwesomeSwiper, /* { default global options } */)
 
 
@@ -77,9 +79,41 @@ const router = new Router({
   ]
 })
 
+const store = new Vuex.Store({
+  state     : {
+    show_cart: false,
+    count : 1,
+    price : 10,
+    info  : null,
+  },
+  mutations : {
+    detect_show_cart(state) {
+      state.show_cart = !state.show_cart;
+    },
+  },
+  getters   : {
+    total (state) {
+      return state.price * state.count;
+    },
+  },
+  actions   : {
+    increment_timer (store) {
+      setInterval(() => {
+        store.commit('increment');
+      }, 500);
+    },
+
+    get_data (store) {
+      api('product/read')
+        .then(r => store.state.info = r.data);
+    },
+  },
+})
+
 Vue.config.productionTip = false;
 
 new Vue({
   render: h => h(App),
   router: router,
+  store,
 }).$mount('#app')

@@ -28,7 +28,7 @@
                     <div class="test">请登录测试账号: admin 密码: yoyoyo</div>
                 </div>
                 <div v-else>
-                    <div class="icon" @click="show_shortcut=!show_shortcut">
+                    <div class="icon" @click="$store.commit('detect_show_cart')">
                         <i class="far fa-user-circle"></i>
                     </div>
                     <div class="cart" @click="show_cart=!show_cart">
