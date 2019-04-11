@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <Nav/>
-        <div class="slider" v-if="swiper.length">
+        <!-- <div class="slider" v-if="swiper.length">
             <swiper :options="swiperOption">
                 <swiper-slide v-for="(it, index) in swiper" :key="index">
                     <router-link to="/search">
@@ -11,7 +11,7 @@
                 <div class="swiper-pagination" slot="pagination"></div>
 
             </swiper>
-        </div>
+        </div> -->
         <div class="main">
             <div class="cat-item">
                 <div class="row d_jump_new">
